@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 150px 0 150px;
+}
+
+.header__logo {
+  position: relative;
+  top: 7px
+}
+
+.header__navigation {
+
+}
+
+.header__navigation-list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.header__navigation-item:not(:last-child) {
+  margin-right: 54px;
+}
+
+.header__navigation-item a {
+  font-size: 18px;
+  color: #272727;
+  font-weight: 400;
+  text-decoration: none;
+}
