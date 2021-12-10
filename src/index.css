@@ -15,9 +15,12 @@
 body {
   margin: 0;
   font-family: "Roboto", "Arial", sans-serif;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8F8F8 100%)
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+

@@ -7,7 +7,7 @@ const RecipeList = ({data = []}) => {
   return (
     <>
       {data && data.map(el => {
-        return <RecipeItem />
+        return <RecipeItem data={el} key={el.id}/>
       })}
     </>
   );

@@ -1,7 +1,8 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin: 24px 150px 0 150px;
+  margin: 24px auto;
+  width: 1140px;
 }
 
 .header__logo {
@@ -10,7 +11,7 @@
 }
 
 .header__navigation {
-
+  
 }
 
 .header__navigation-list {
