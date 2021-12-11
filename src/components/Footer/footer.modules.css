@@ -1,0 +1,37 @@
+.footer {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 160px;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 1140px;
+  margin: 0 auto;
+  height: 50px;
+
+}
+
+.footer__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+
+}
+
+.footer__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.footer__item a {
+  text-decoration: none;
+  
+}
+
+.footer__left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
