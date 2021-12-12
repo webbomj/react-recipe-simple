@@ -23,7 +23,7 @@ const Hero = ({data}) => {
           </svg>
         </div>
           <div className='search'>
-            <input className='search__input' type='text' placeholder='...eg Chiken' />  
+            <input className='search__input' type='text' placeholder='e.g. Chiken' />  
           </div>
           <button>Search</button>
       </div>

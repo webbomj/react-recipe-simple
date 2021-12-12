@@ -18,3 +18,7 @@ body {
 }
 
 
+#root {
+  background: linear-gradient(180deg, #6935FD 0%, #5a21fc 100%);
+  padding-top: 10px;
+}
