@@ -2,13 +2,14 @@ import React from 'react';
 import RecipeList from '../RecipeList/RecipeList';
 import './hero.modules.css'
 
-const data = [
-  {id: 1, title: 'Calabasas,CA', info: '$1.5k+ / 2 Beds / Appt. ...3 more'},
-  {id: 2, title: 'Calabasas,CA', info: '$2.0k+ / 1 Beds / Appt. ...3 more'},
-  {id: 3, title: 'Calabasas,CA', info: '$2.5k+ / 2 Beds / Appt. ...3 more'},
-]
+// const data = [
+//   {id: 1, title: 'Calabasas,CAssssssss ss ssss sssss', info: '$1.5k+ / 2 Beds / Appt. ...3 more'},
+//   {id: 2, title: 'Calabasas,CA sssss ss s sssss ss sssss ssssssss', info: '$2.0k+ / 1 Beds / Appt. ...3 more'},
+//   {id: 3, title: 'Calabasas,CA', info: '$2.5k+ / 2 Beds / Appt. ...3 moresssssssssssssssssssssssssssssssssssssssssssssssssssss'},
+//   {id: 4, title: 'Calabasas,CA', info: '$2.5k+ / 2 Beds / Appt. ...3 more sssss ss ss sssss ssss sssss sssss sssss ssss ssss sss'},
+// ]
 
-const Hero = () => {
+const Hero = ({data}) => {
   return (
     <main className='wrapper'>
       <div className='main__header'>
@@ -22,7 +23,7 @@ const Hero = () => {
           </svg>
         </div>
           <div className='search'>
-            <input className='search__input' type='text' placeholder='Search for address' />  
+            <input className='search__input' type='text' placeholder='...eg Chiken' />  
           </div>
           <button>Search</button>
       </div>

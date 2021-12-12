@@ -32,3 +32,43 @@
   height: 6px;
   transform: rotate(45deg);
 }
+
+/* Tabs */
+
+.card {
+  width: 210px;
+  min-height: 360px;
+  border: 1px solid grey;
+  margin-bottom: 10px;
+}
+
+.card:not(:nth-child(3)) {
+  margin-right: 10px;
+}
+
+
+.card__image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  margin-top: 5px
+
+}
+
+
+.card__content {
+  padding: 7px;
+}
+
+.card__title {
+  font-size: 20px;
+  letter-spacing: -0.06em;
+  color: #6935FD;
+  font-weight: bold;
+}
+
+.card__info {
+  font-size: 16px;
+  overflow: hidden;
+}
