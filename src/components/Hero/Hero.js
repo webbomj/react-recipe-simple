@@ -13,8 +13,8 @@ const Hero = ({data}) => {
   return (
     <main className='wrapper'>
       <div className='main__header'>
-        <h1>Find your ideal home</h1>
-        <p>Search from more than 19 million of inspected appartments,  houses, cottages, villas, manors and mansions</p>
+        <h1>Find your ideal recipe</h1>
+        <p>Search from over 1 million recipes, dishes, drinks, indicating: calories, proteins, fats and carbohydrates</p>
       </div>
       <div className='main__search'>
         <div className='icon__search'>
