@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import RecipeList from '../RecipeList/RecipeList';
 import './hero.modules.css'
 
@@ -9,8 +9,22 @@ import './hero.modules.css'
 //   {id: 4, title: 'Calabasas,CA', info: '$2.5k+ / 2 Beds / Appt. ...3 more sssss ss ss sssss ssss sssss sssss sssss ssss ssss sss'},
 // ]
 
-const Hero = ({data}) => {
-  return (
+const Hero = ({data, newQuery}) => {
+  const [ingredient, setIngredient] = useState('');
+
+
+    function handlerInput(e) {
+      setIngredient(e.target.value);
+    }
+
+    function handlerClick() {
+      if (ingredient) {
+        newQuery(ingredient)
+      }
+
+    }
+
+    return (
     <main className='wrapper'>
       <div className='main__header'>
         <h1>Find your ideal recipe</h1>
@@ -23,9 +37,9 @@ const Hero = ({data}) => {
           </svg>
         </div>
           <div className='search'>
-            <input className='search__input' type='text' placeholder='e.g. Chiken' />  
+            <input className='search__input' type='text' placeholder='e.g. Chiken' value={ingredient} onChange={(e) => handlerInput(e)}/>  
           </div>
-          <button>Search</button>
+          <button onClick={() => handlerClick()} disabled={!ingredient}>Search</button>
       </div>
       <div className='main__recipe'>
         <RecipeList data={data}/>

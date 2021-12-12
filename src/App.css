@@ -356,5 +356,5 @@ template {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8F8F8 100%);
+  background: linear-gradient(180deg, #F8F8F8 0%, #F8F8F8 100%);
 }
