@@ -9,7 +9,7 @@ const RecipeList = ({data}) => {
       {data ? data.map(el => {
         return <RecipeItem data={el} key={el.recipe.calories}/>
         
-      }): 'Loading...'}
+      }): <span>Loading...</span>}
     </div>
   );
 };

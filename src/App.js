@@ -20,8 +20,8 @@ function App() {
     } catch(e) {
       console.log(e);
     }
-    
   }, [query])
+
   return (
     <div className="App">
       <Header/>

@@ -21,7 +21,12 @@ const Hero = ({data, newQuery}) => {
       if (ingredient) {
         newQuery(ingredient)
       }
+    }
 
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        newQuery(ingredient)
+      }
     }
 
     return (
@@ -37,7 +42,14 @@ const Hero = ({data, newQuery}) => {
           </svg>
         </div>
           <div className='search'>
-            <input className='search__input' type='text' placeholder='e.g. Chiken' value={ingredient} onChange={(e) => handlerInput(e)}/>  
+            <input 
+              className='search__input' 
+              type='text' 
+              placeholder='e.g. Chiken' 
+              value={ingredient} 
+              onChange={(e) => handlerInput(e)}
+              onKeyPress={(e) => handleKeyPress(e)}
+            />  
           </div>
           <button onClick={() => handlerClick()} disabled={!ingredient}>Search</button>
       </div>

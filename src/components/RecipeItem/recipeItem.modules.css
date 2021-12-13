@@ -38,9 +38,10 @@
 .card {
   width: 210px;
   min-height: 360px;
-  border: 1px solid grey;
+  border: 1px solid rgba(0,0,0,.125);
   margin-bottom: 10px;
   background-color: white;
+  border-radius: 0.25em;
 }
 
 .card:not(:nth-child(3)) {
