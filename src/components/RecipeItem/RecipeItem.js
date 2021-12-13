@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {ReactSVG} from 'react';
 import './recipeItem.modules.css'
+import Calories from '../ui/Icons/Calories/Calories';
+import Clock from '../ui/Icons/Clock/Clock';
 
 const RecipeItem = ({data}) => {
   const {recipe} = data;
@@ -15,7 +17,10 @@ const RecipeItem = ({data}) => {
         </div>
         <div className="card__content">
           <span className="card__title">{recipe.label}</span>
-          <p className='card__info'>{data.info}</p>
+          <div className='card__info'>
+            <div className='card__lines'><Calories height='16pt' width='16pt' color='#6935FD'/><span className='card__lines-info'>{recipe.calories === 0.0 ? 0 : recipe.calories.toFixed()} kcal</span></div>
+            <div className='card__lines'><Clock height='16pt' width='16pt' color='#6935FD'/><span className='card__lines-info'>{recipe.totalTime === 0.0 ? ' -' : recipe.totalTime.toFixed() + ' min'} </span></div>
+          </div>
         </div>
       </div>
     
