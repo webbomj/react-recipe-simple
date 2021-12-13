@@ -1,10 +1,12 @@
 .wrapper {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   margin: auto;
   margin-top: 80px;
   width: 670px;
+  
 }
 
 .main__header h1 {
@@ -109,6 +111,16 @@
 
 }
 
-.main__recipe > div {
+/* .main__recipe > div {
   margin-bottom: 16px;
+} */
+
+.next-page {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.next-page-link {
+  cursor: pointer;
+  color: rgb(0, 0, 238);
 }

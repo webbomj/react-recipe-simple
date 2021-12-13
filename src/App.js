@@ -1,16 +1,34 @@
 import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Footer from './components/Footer/Footer';
+import Post from './components/Post/Post'
+
 
 function App() {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('chicken')
 
+
   function newQuery(ingredient) {
     setQuery(ingredient)
   }
+
+  async function nextPage(url) {
+    try {
+      console.log(url)
+      await fetch(`${url}`)
+      .then(response => response.json())
+      .then(data => setData(data))
+    } catch(e) {
+      console.log('nextPage', e)
+    }
+    
+  }
+
+  
 
   useEffect(() => {
     try { 
@@ -18,16 +36,37 @@ function App() {
       .then(response => response.json())
       .then(data => setData(data))
     } catch(e) {
-      console.log(e);
+      console.log('useEffect', e);
     }
   }, [query])
 
+  // useEffect(() => {
+  //   try {
+  //     fetch(isPost).then(response => response.json())
+  //     .then(data => setPostData(data))
+  //   } catch (e) {
+  //     console.log('useEffect2', e)
+  //   }
+      
+    
+  // }, [isPost])
+
   return (
-    <div className="App">
-      <Header/>
-      <Hero data={data.hits} newQuery={newQuery}/>
-      <Footer/>
-    </div>
+   
+      <div className="App">
+        <Header/>
+        
+          
+      <Hero data={data} newQuery={newQuery} nextPage={nextPage}/>
+              
+          
+        
+        <Footer/>
+      </div>
+      
+
+      
+   
   );
 }
 

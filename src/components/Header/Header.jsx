@@ -16,8 +16,8 @@ const Header = () => {
           <path d="M141.844 31.53V18.4687C141.844 18.2732 141.844 18.0523 141.844 17.8136C141.844 14.9659 139.535 12.6562 136.688 12.6562V12.6562C135.031 12.6562 130.33 12.6875 130.33 12.6875C130.33 12.6875 130.33 16.7656 130.33 18.5469V31.5312H125.127V8.23438C130.366 8.23438 133.013 8.20312 138.281 8.20312C141.156 8.20312 143.328 8.60937 144.797 10.3594C146.266 12.0469 147 14.3125 147 17.1562V31.53H141.844Z" fill="#6935FD"/>
           </g>
           <defs>
-          <filter id="filter0_d_0_73" x="0" y="0" width="151" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <filter id="filter0_d_0_73" x="0" y="0" width="151" height="40" filterUnits="userSpaceOnUse">
+          <feFlood floodOpacity="0" result="BackgroundImageFix"/>
           <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
           <feOffset dy="4"/>
           <feGaussianBlur stdDeviation="2"/>
