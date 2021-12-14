@@ -42,3 +42,27 @@ font-size: 30px;
 .post__img {
   border-radius: 50%;
 }
+
+.ingredients {
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredients__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ingredients__title {
+  font-size: 30px;
+}
+
+.ingredients__panel {
+  margin: auto 0;
+}
+
+.ingredients__img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
