@@ -8,6 +8,20 @@ const Hero = ({data, newQuery, nextPage, isPost, setIsPost}) => {
   const [postData, setPostData] = useState()
   const {hits, _links} = data;
 
+  let nextPageUrl = '' ;
+
+  if (data.hasOwnProperty('_links')) {
+    nextPageUrl = _links.next.href
+  } else {
+    nextPageUrl = 'http://localhost:3000/'
+  }
+
+  console.log(data);
+  console.log(isPost);
+  console.log(setIsPost);
+
+
+
     function handlerInput(e) {
       setIngredient(e.target.value);
     }
@@ -68,9 +82,8 @@ const Hero = ({data, newQuery, nextPage, isPost, setIsPost}) => {
           <RecipeList 
             data={hits} 
             clickOnCard={clickOnCard} 
-            isPost={isPost} 
-            next={handleClickNextPage} 
-            urlNext={_links.next.href}
+            handleClickNextPage={handleClickNextPage} 
+            urlNext={nextPageUrl}
             />
         }
       </div>

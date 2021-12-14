@@ -1,5 +1,8 @@
 .post {
-
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 0 10px 40px 10px;
 }
 
 .post__title {
@@ -9,13 +12,33 @@ font-size: 30px;
 
 .post__wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  margin-top: 50px;
+
+}
+
+.post__picture {
+  margin: 0;
+  margin-right: 30px;
+}
+
+
+.ingredients__list {
+  margin: 0;
+  list-style: none;
+  padding-left: 0;
+}
+
+.ingredients__item::before {
+  content: '•';
+  color: #6935FD;
+  padding-right: 10px;
 }
 
 .ingredients__item:not(:last-child) {
   margin-bottom: 10px;
 }
 
-.ingredients__list {
-  margin: 0;
+.post__img {
+  border-radius: 50%;
 }
