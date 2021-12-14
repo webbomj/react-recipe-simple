@@ -3,11 +3,9 @@ import RecipeList from '../RecipeList/RecipeList';
 import './hero.modules.css'
 import Post from '../Post/Post'
 
-const Hero = ({data, newQuery, nextPage}) => {
+const Hero = ({data, newQuery, nextPage, isPost, setIsPost}) => {
   const [ingredient, setIngredient] = useState('');
-  const [isPost, setIsPost] = useState('')
   const [postData, setPostData] = useState()
-
   const {hits, _links} = data;
 
     function handlerInput(e) {
@@ -16,26 +14,25 @@ const Hero = ({data, newQuery, nextPage}) => {
 
     function handlerClick() {
       if (ingredient) {
-        newQuery(ingredient)
+      newQuery(ingredient);
+      setIngredient('');
       }
     }
 
     const handleKeyPress = (e) => {
       if (e.key === 'Enter') {
         newQuery(ingredient)
+        setIngredient('');
       }
     }
 
     const handleClickNextPage = (url) => {
       if (url) {
         nextPage(url);
-      }
-      
+      }   
     }
 
     async function clickOnCard(url) {
-      console.log(url)
-     
       await fetch(url).then(response => response.json())
       .then(data => setPostData(data)).then(() =>  setIsPost(url))
     }
