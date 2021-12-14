@@ -19,6 +19,7 @@
 
 .cardNext__nav {
   display: flex;
+  background-color: inherit;
   justify-content: center;
   align-items: center;
   height: 100%;

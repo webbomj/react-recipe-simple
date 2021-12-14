@@ -1,13 +1,15 @@
 import React from 'react';
 import RecipeItem from '../RecipeItem/RecipeItem';
 import './recipeList.modules.css'
+import Preloader from '../ui/preloader/Preloader';
+
 
 const RecipeList = ({data, clickOnCard, handleClickNextPage, urlNext}) => {
   return (
     <div className='content-wrapper'>
       {data ? data.map(el => {
         return <RecipeItem data={el} clickOnCard={clickOnCard} key={el.recipe.calories}/>
-      }): <span>Loading...</span>}
+      }): <Preloader/>}
       {!data ? 
       null :
       <div className='cardNext' onClick={() => handleClickNextPage(urlNext)}>
