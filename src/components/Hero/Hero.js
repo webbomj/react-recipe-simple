@@ -62,9 +62,18 @@ const Hero = ({data, newQuery, nextPage, isPost, setIsPost}) => {
           <button onClick={() => handlerClick()} disabled={!ingredient}>Search</button>
       </div>
       <div className='main__recipe'>
-        { isPost ? <Post data={postData}/> : <RecipeList data={hits} clickOnCard={clickOnCard}/> }
+        { isPost ?
+          <Post data={postData}/> 
+        : 
+          <RecipeList 
+            data={hits} 
+            clickOnCard={clickOnCard} 
+            isPost={isPost} 
+            next={handleClickNextPage} 
+            urlNext={_links.next.href}
+            />
+        }
       </div>
-     {isPost ? null : <nav className='next-page'><span className='next-page-link' onClick={() => handleClickNextPage(_links.next.href)}>Следующая страница &raquo;</span></nav> } 
     </main>
   );
 };

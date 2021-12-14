@@ -3,11 +3,10 @@ import './Post.modules.css'
 
 const Post = ({data}) => {
   const {recipe} = data;
-  let imgSRC = '';
-  if (recipe.images.REGULAR.url) {
+  let imgSRC = 'https://via.placeholder.com/300';
+
+  if (recipe.images.REGULAR) {
     imgSRC = recipe.images.REGULAR.url
-  } else {
-    imgSRC = recipe.images.SMALL.url
   }
 
   return (

@@ -15,10 +15,10 @@ function App() {
     setQuery(ingredient)
   }
 
-  async function nextPage(url) {
+  function nextPage(url) {
     try {
       console.log(url)
-      await fetch(`${url}`)
+      fetch(url)
       .then(response => response.json())
       .then(data => setData(data))
     } catch(e) {
