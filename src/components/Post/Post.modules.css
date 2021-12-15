@@ -27,6 +27,7 @@ font-size: 30px;
   margin: 0;
   list-style: none;
   padding-left: 0;
+  margin-top: 40px;
 }
 
 .ingredients__item::before {
@@ -58,11 +59,84 @@ font-size: 30px;
 }
 
 .ingredients__panel {
+  display: flex;
   margin: auto 0;
 }
 
 .ingredients__img {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 10px;
+  margin-right: 15px;
+  margin-bottom: 15px;
 }
+
+.ingredients-panel__button {
+  color: #6935FD;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #6935FD;
+  border-radius: 3px;
+
+}
+
+.ingredients-panel__button:hover {
+  cursor: pointer;
+}
+
+.ingredients-panel__button--dec {
+  border-left: 0;
+}
+
+.ingredients-panel__button--text {
+  
+}
+
+.ingredients__title--count {
+  color: #6935FD;
+  font-weight: bold;
+  font-size: 40px;
+  border-bottom: 1px solid #6935FD;
+}
+
+
+.ingredients__table {
+  width: 100%;
+  font-size: 20px;
+  line-height: 30px;
+  border-collapse: collapse;
+}
+
+.ingredients__table--title {
+  border-bottom: 3px solid #e5e5e5;
+  font-weight: bold;
+}
+
+.ingredients__table--ingredients {
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 30px;
+  height: 40px;
+}
+
+.ingredients__table--measure {
+  color: #bcbcbc;
+  width: 20px;
+  padding-left: 5px;
+}
+
+.ingredients__table--quantity {
+  text-align: right;
+}
+
+.title__Quantity {
+  text-align: right;
+}
+
+.title__Measure {
+  width: 20px;
+}
+

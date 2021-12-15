@@ -5,7 +5,8 @@ const Post = ({data}) => {
   const {recipe} = data;
   let imgSRC = 'https://via.placeholder.com/300';
   let arrIngredients = [];
-  const [portions, setPortions] = useState(1)
+  const [portions, setPortions] = useState(1);
+  const [ing, setIng] = useState(arrIngredients);
   if (recipe.images.REGULAR) {
     imgSRC = recipe.images.REGULAR.url
   }
@@ -24,10 +25,22 @@ const Post = ({data}) => {
 
   const incPortion = () => {
     setPortions(prev => prev + 1)
+    let arrNewQuantity = ing.map((el, i) => {
+      return {...el, quantity: el.quantity + arrIngredients[i].quantity}
+    })
+    setIng(arrNewQuantity)
   }
 
   const decPortion = () => {
-    setPortions(prev => prev - 1)
+    if (portions === 1) {
+      return
+    } else {
+      setPortions(prev => prev - 1)
+      let arrNewQuantity = ing.map((el, i) => {
+        return {...el, quantity: el.quantity - arrIngredients[i].quantity}
+      })
+      setIng(arrNewQuantity)
+    }
   }
 
   return (
@@ -45,29 +58,31 @@ const Post = ({data}) => {
       </div>
       <div className='ingredients'>
           <div className='ingredients__header'>
-            <h3 className='ingredients__title'>To make {portions} servings you need:</h3>
+            <h3 className='ingredients__title'>
+            To make <span className='ingredients__title--count'>{portions === 1 ? portions + ' serving' : portions + ' servings'}</span> you need:
+            </h3>
             <div className='ingredients__panel'>
-              <button className='ingredients-panel__inc' onClick={() => incPortion()}>+</button>
-              <button className='ingredients-panel__dec' onClick={() => decPortion()}>-</button>
+              <div className='ingredients-panel__button ingredients-panel__button--inc' onClick={() => incPortion()}><span className='ingredients-panel__button--text'>&#43;</span></div>
+              <div className='ingredients-panel__button ingredients-panel__button--dec' onClick={() => decPortion()}><span className='ingredients-panel__button--text'>&#8722;</span></div>
             </div>
           </div>
-          <div className='ingredients__images'>{arrIngredients.map(el => {
+          <div className='ingredients__images'>{ing.map(el => {
             return <img className='ingredients__img' src={el.image} key={el.image} alt={el.food}/>
           })}</div>
           <div className='ingredients__list'>
-          <table>
+          <table className='ingredients__table'>
             <tbody>
               <tr>
-                <td>Necessary ingredients</td>
-                <td>Quantity</td>
-                <td></td>
+                <td className='ingredients__table--title'>Necessary ingredients</td>
+                <td className='ingredients__table--title'></td>
+                <td className='ingredients__table--title title__Measure'></td>
               </tr>
-                {arrIngredients.map(el => {
+                {ing.map(el => {
                   return (
                     <tr key={el.food}>
-                    <td>{el.food}</td>
-                    <td>{el.quantity}</td>
-                    <td>{el.measure}</td>
+                    <td  className='ingredients__table--ingredients'>{el.food.slice(0, 1).toUpperCase() + el.food.slice(1)}</td>
+                    <td  className='ingredients__table--ingredients ingredients__table--quantity'>{el.quantity}</td>
+                    <td  className='ingredients__table--ingredients ingredients__table--measure'>{el.measure === '<unit>' ? 'unit' : el.measure}</td>
                     </tr>
                   ) 
                 })}
