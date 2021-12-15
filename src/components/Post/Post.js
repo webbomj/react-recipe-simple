@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import './Post.modules.css'
+import './Post.modules.css';
+import Calories from '../ui/Icons/Calories/Calories';
+import Protein from '../ui/Icons/Protein/Protein';
+import Carbs from '../ui/Icons/Carbs/Carbs';
+import Fat from '../ui/Icons/Fat/Fat';
+import Weight from '../ui/Icons/Weight/Weight';
+import Clock from '../ui/Icons/Clock/Clock';
+import Flag from '../ui/Icons/Flag/Flag';
 
 const Post = ({data}) => {
   const {recipe} = data;
@@ -46,6 +53,23 @@ const Post = ({data}) => {
   return (
     <div className='post'>
       <h2 className='post__title'>{recipe.label}</h2>
+      <div className='post__total-wrapper'>
+        <div className='post__total-info'>
+          <Flag height='20pt' width='20pt' color='white'/>
+          <span className='post__total-info--Weight'>
+            {recipe.cuisineType ? recipe.cuisineType : 'none'}
+          </span>
+          <Weight height='20pt' width='20pt' color='white'/>
+          <span className='post__total-info--Weight'>
+          {recipe.totalWeight ? Math.ceil(recipe.totalWeight) + ' g' : '-'}
+          </span>
+          <Clock height='17pt' width='20pt' color='white'/>
+          <span className='post__total-info--Weight'>
+          {recipe.totalTime ? Math.ceil(recipe.totalTime) + ' min' : '-'}
+          </span>
+        </div>
+      </div>
+      
       <div className='post__wrapper'>
         <div className='post__picture'><img className="post__img" src={imgSRC} alt={recipe.label}/></div>
         <div className='post__ingredients'>
@@ -55,6 +79,46 @@ const Post = ({data}) => {
             })}
           </ul>
         </div>
+      </div>
+      <div className='nutritional-value'>The nutritional value per 100 g:</div>
+      <div className='resume'>
+        <ul className='resume__list'>
+          <li className='resume__item'>
+            <Calories height='25pt' width='25pt' color='white'/>
+            <span className='resume__item--text'>
+              { recipe.totalNutrients.ENERC_KCAL.quantity ?
+                Math.ceil((Math.ceil(recipe.totalNutrients.ENERC_KCAL.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' kcal'
+                : '-'
+              }
+            </span>
+          </li>
+          <li className='resume__item'>
+            <Protein height='25pt' width='25pt' color='white'/>
+            <span className='resume__item--text'>
+              {recipe.totalNutrients.PROCNT.quantity ?
+                Math.ceil((Math.ceil(recipe.totalNutrients.PROCNT.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' g'
+               : '-'}
+            </span>
+          </li>
+          <li className='resume__item'>
+            <Fat height='25pt' width='25pt' color='white'/>
+            <span className='resume__item--text'>
+              {recipe.totalNutrients.FAT.quantity ?
+                Math.ceil((Math.ceil(recipe.totalNutrients.FAT.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' g'
+              : '-'
+              }
+            </span>
+          </li>
+          <li className='resume__item'>
+            <Carbs height='25pt' width='25pt' color='white'/>
+            <span className='resume__item--text'>
+              {recipe.totalNutrients.CHOCDF.quantity ?
+                Math.ceil((Math.ceil(recipe.totalNutrients.CHOCDF.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' g'
+              : '-'
+              }
+            </span>
+          </li>
+        </ul>
       </div>
       <div className='ingredients'>
           <div className='ingredients__header'>
@@ -90,6 +154,7 @@ const Post = ({data}) => {
           </table>
           </div>
       </div>
+      
     </div>
   );
 };
