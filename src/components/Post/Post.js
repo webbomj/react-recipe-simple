@@ -7,13 +7,15 @@ import Fat from '../ui/Icons/Fat/Fat';
 import Weight from '../ui/Icons/Weight/Weight';
 import Clock from '../ui/Icons/Clock/Clock';
 import Flag from '../ui/Icons/Flag/Flag';
+import { useSelector } from 'react-redux';
 
-const Post = ({data}) => {
-  const {recipe} = data;
+const Post = () => {
   let imgSRC = 'https://via.placeholder.com/300';
   let arrIngredients = [];
   const [portions, setPortions] = useState(1);
   const [ing, setIng] = useState(arrIngredients);
+  const recipe = useSelector(state => state.data.post.recipe);
+ 
   if (recipe.images.REGULAR) {
     imgSRC = recipe.images.REGULAR.url
   }
@@ -131,7 +133,7 @@ const Post = ({data}) => {
             </div>
           </div>
           <div className='ingredients__images'>{ing.map(el => {
-            return <img className='ingredients__img' src={el.image} key={el.image} alt={el.food}/>
+            return <img className='ingredients__img' src={el.image} key={el.food} alt={el.food}/>
           })}</div>
           <div className='ingredients__list'>
           <table className='ingredients__table'>

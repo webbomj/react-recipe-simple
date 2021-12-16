@@ -2,25 +2,14 @@ import React, {useState} from 'react';
 import RecipeList from '../RecipeList/RecipeList';
 import './hero.modules.css'
 import Post from '../Post/Post'
+import { useSelector, useDispatch } from 'react-redux';
+import { addQuerry} from '../Store/RecipesReducer'
 
-const Hero = ({data, newQuery, nextPage, isPost, setIsPost}) => {
+
+const Hero = () => {
   const [ingredient, setIngredient] = useState('');
-  const [postData, setPostData] = useState()
-  const {hits, _links} = data;
-
-  let nextPageUrl = '' ;
-
-  if (data.hasOwnProperty('_links')) {
-    nextPageUrl = _links.next.href
-  } else {
-    nextPageUrl = 'http://localhost:3000/'
-  }
-
-  console.log(data);
-  console.log(isPost);
-  console.log(setIsPost);
-
-
+  const dispatch = useDispatch();
+  const postData = useSelector(state => state.data.post)
 
     function handlerInput(e) {
       setIngredient(e.target.value);
@@ -28,27 +17,16 @@ const Hero = ({data, newQuery, nextPage, isPost, setIsPost}) => {
 
     function handlerClick() {
       if (ingredient) {
-      newQuery(ingredient);
+      dispatch(addQuerry(ingredient));
       setIngredient('');
       }
     }
 
     const handleKeyPress = (e) => {
       if (e.key === 'Enter') {
-        newQuery(ingredient)
+        dispatch(addQuerry(ingredient));
         setIngredient('');
       }
-    }
-
-    const handleClickNextPage = (url) => {
-      if (url) {
-        nextPage(url);
-      }   
-    }
-
-    async function clickOnCard(url) {
-      await fetch(url).then(response => response.json())
-      .then(data => setPostData(data)).then(() =>  setIsPost(url))
     }
 
     return (
@@ -76,15 +54,10 @@ const Hero = ({data, newQuery, nextPage, isPost, setIsPost}) => {
           <button onClick={() => handlerClick()} disabled={!ingredient}>Search</button>
       </div>
       <div className='main__recipe'>
-        { isPost ?
-          <Post data={postData}/> 
+        {  postData.recipe ?
+          <Post/>
         : 
-          <RecipeList 
-            data={hits} 
-            clickOnCard={clickOnCard} 
-            handleClickNextPage={handleClickNextPage} 
-            urlNext={nextPageUrl}
-            />
+          <RecipeList/>
         }
       </div>
     </main>
