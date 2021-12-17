@@ -1,0 +1,17 @@
+
+.main__header h1 {
+  margin: 0;
+  font-size: 70px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  color: #272727;
+}
+
+.main__header > p {
+  display: inline-block;
+  margin-bottom: 0;
+  margin-top: 32px;
+  font-size: 22px;
+  text-align: center;
+}

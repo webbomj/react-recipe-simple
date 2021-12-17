@@ -7,8 +7,10 @@ import fetchNextPage from '../AsyncActions/fetchNextPage';
 
 
 const RecipeList = () => {
-  const data = useSelector(state => state.data.data.hits)
-  const _links = useSelector(state => state.data.data._links)
+  
+  const data = useSelector(state => state.data.data.hits);
+  const _links = useSelector(state => state.data.data._links);
+  const isLoading = useSelector(state => state.data.loading);
   const dispatch = useDispatch()
 
   let nextPageUrl = '' ;
@@ -18,15 +20,20 @@ const RecipeList = () => {
     nextPageUrl = 'http://localhost:3000/'
   }
 
+  console.log(isLoading)
+
   return (
     <div className='content-wrapper'>
-      {data ? data.map(el => {
+      {isLoading ? 
+      <Preloader/>
+      :
+      data.map(el => {
         return <RecipeItem 
                 data={el} 
                 key={el.recipe.calories}
                 />
-      }): <Preloader/>}
-      {!data ? 
+      })}
+      {isLoading ? 
       null :
       <div className='cardNext' onClick={() => dispatch(fetchNextPage(nextPageUrl))}>
         <nav className='cardNext__nav'>Next Page »</nav>

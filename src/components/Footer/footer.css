@@ -10,7 +10,6 @@
   width: 1140px;
   margin: 0 auto;
   height: 50px;
-
 }
 
 .footer__list {
@@ -18,7 +17,6 @@
   justify-content: center;
   align-items: center;
   list-style-type: none;
-
 }
 
 .footer__item:not(:last-child) {
@@ -28,7 +26,6 @@
 .footer__item a {
   color: #6935FD;
   text-decoration: none;
-  
 }
 
 .footer__left {

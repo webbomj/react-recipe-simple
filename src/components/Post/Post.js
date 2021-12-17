@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Post.css';
+import { useDispatch, useSelector} from 'react-redux';
+import { useParams} from 'react-router-dom';
+import {setPostId} from '../Store/RecipesReducer';
+import fetchOneRecipe from '../AsyncActions/fetchOneRecipe';
 import Calories from '../ui/Icons/Calories/Calories';
 import Protein from '../ui/Icons/Protein/Protein';
 import Carbs from '../ui/Icons/Carbs/Carbs';
@@ -7,19 +11,29 @@ import Fat from '../ui/Icons/Fat/Fat';
 import Weight from '../ui/Icons/Weight/Weight';
 import Clock from '../ui/Icons/Clock/Clock';
 import Flag from '../ui/Icons/Flag/Flag';
-import { useSelector } from 'react-redux';
+import Preloader from '../ui/preloader/Preloader';
+
 
 const Post = () => {
   let imgSRC = 'https://via.placeholder.com/300';
   let arrIngredients = [];
+  let {postId} = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchOneRecipe(`https://api.edamam.com/api/recipes/v2/${postId}?type=public&app_id=9aa93e9c&app_key=98b8b38b27fcc09925f8d185765479ff`))
+  }, [])
+
+  const recipe = useSelector(state => state.data.post.recipe);
+  const isLoading = useSelector(state => state.data.loading);
   const [portions, setPortions] = useState(1);
   const [ing, setIng] = useState(arrIngredients);
-  const recipe = useSelector(state => state.data.post.recipe);
- 
+
+ if (recipe !== null && recipe !== undefined) {
+  dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')))
   if (recipe.images.REGULAR) {
     imgSRC = recipe.images.REGULAR.url
   }
-
   if (recipe.ingredients) {
     recipe.ingredients.forEach(el => {
       let ingred = {
@@ -30,6 +44,7 @@ const Post = () => {
       }
       arrIngredients.push(ingred);
     })
+  }
   }
 
   const incPortion = () => {
@@ -53,6 +68,8 @@ const Post = () => {
   }
 
   return (
+    <>
+    {isLoading ? <Preloader/> : 
     <div className='post'>
       <h2 className='post__title'>{recipe.label}</h2>
       <div className='post__total-wrapper'>
@@ -156,8 +173,8 @@ const Post = () => {
           </table>
           </div>
       </div>
-      
     </div>
+    }</>
   );
 };
 

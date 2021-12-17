@@ -4,30 +4,27 @@ import './App.css';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Footer from './components/Footer/Footer';
+import Post from './components/Post/Post';
+import ContentWrapper from './components/ContentWrapper/ContentWrapper'
 import { useDispatch, useSelector } from 'react-redux';
 import fetchRecipe from './components/AsyncActions/fetchReicepe'
+import Search from './components/Search/Search';
+import Title from './components/Title/Title';
 
 function App() {
-  const dispatch = useDispatch();
-  const query = useSelector(state => state.data.query)
 
-useEffect(() => {
-  try {
-    dispatch(fetchRecipe(query))
-  }catch(e){
-    console.log('useEffect1', e)
-  }
-}, [query])
 
   return (
     <div className="App">
       <Header/>
-      <Routes>
-        <Route path='/' element={<Hero/>}>
-        </Route>
-        <Route path='/e' element={<Footer/>}>
-        </Route>
-      </Routes>
+      <ContentWrapper>
+      <Title/>
+      <Search/>
+        <Routes>
+          <Route path='/' element={<Hero/>}></Route>
+          <Route path='/:postId' element={<Post/>}></Route>
+        </Routes>
+      </ContentWrapper>
       <Footer/>
     </div>
   );

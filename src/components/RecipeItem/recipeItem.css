@@ -71,12 +71,20 @@
 .card__title {
   font-size: 20px;
   letter-spacing: -0.06em;
-  color: #6935FD;
   font-weight: bold;
 }
 
 .card__title:hover {
   cursor: pointer;
+}
+
+.card__title--link {
+  text-decoration: none;
+  color: #6935FD;
+}
+
+.card__title--link:hover {
+  color: #906afc;
 }
 
 .card__info {
