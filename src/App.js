@@ -11,21 +11,11 @@ function App() {
   const dispatch = useDispatch();
   const query = useSelector(state => state.data.query)
 
-  // function nextPage(url) {
-  //   try {
-  //     dispatch(fetchNextPage(url))
-  //   }catch(e){
-  //     console.log('useEffect1', e)
-  //   } finally {
-  //   }
-  // }
-
 useEffect(() => {
   try {
     dispatch(fetchRecipe(query))
   }catch(e){
     console.log('useEffect1', e)
-  } finally {
   }
 }, [query])
 

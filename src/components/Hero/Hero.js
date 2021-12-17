@@ -1,20 +1,34 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import RecipeList from '../RecipeList/RecipeList';
 import './hero.modules.css'
 import Post from '../Post/Post'
 import { useSelector, useDispatch } from 'react-redux';
 import { addQuerry} from '../Store/RecipesReducer'
+import Preloader from '../ui/preloader/Preloader';
 
 
 const Hero = () => {
   const [ingredient, setIngredient] = useState('');
+  const [flag, setFlag] = useState('preloader');
   const dispatch = useDispatch();
-  const postData = useSelector(state => state.data.post)
+  const whatsFlag = useSelector(state => state.data.flag)
 
     function handlerInput(e) {
       setIngredient(e.target.value);
     }
 
+    useEffect(() => {
+        if (whatsFlag === 'post') {
+          setFlag('post');
+        }
+        if (whatsFlag === 'list') {
+          setFlag('list');
+        }
+        if (whatsFlag === 'preloader') {
+          setFlag('preloader');
+        }
+    }, [whatsFlag])
+    
     function handlerClick() {
       if (ingredient) {
       dispatch(addQuerry(ingredient));
@@ -54,11 +68,9 @@ const Hero = () => {
           <button onClick={() => handlerClick()} disabled={!ingredient}>Search</button>
       </div>
       <div className='main__recipe'>
-        {  postData.recipe ?
-          <Post/>
-        : 
-          <RecipeList/>
-        }
+        { flag === 'list' && <RecipeList/>}
+        { flag === 'post' && <Post/>}
+        { flag === 'preloader' && <Preloader/>}
       </div>
     </main>
   );
