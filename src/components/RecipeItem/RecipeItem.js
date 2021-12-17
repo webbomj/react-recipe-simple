@@ -1,5 +1,5 @@
 import React from 'react';
-import './recipeItem.modules.css'
+import './recipeItem.css'
 import Calories from '../ui/Icons/Calories/Calories';
 import Clock from '../ui/Icons/Clock/Clock';
 import { useDispatch} from 'react-redux';

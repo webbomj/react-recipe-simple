@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.modules.css'
+import './header.css'
 import Button from '../ui/button/Button';
  
 const Header = () => {

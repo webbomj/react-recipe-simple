@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import RecipeList from '../RecipeList/RecipeList';
-import './hero.modules.css'
+import './hero.css'
 import Post from '../Post/Post'
 import { useSelector, useDispatch } from 'react-redux';
 import { addQuerry} from '../Store/RecipesReducer'
 import Preloader from '../ui/preloader/Preloader';
+import fetchRecipe from '../AsyncActions/fetchReicepe';
 
 
 const Hero = () => {
@@ -12,6 +13,7 @@ const Hero = () => {
   const [flag, setFlag] = useState('preloader');
   const dispatch = useDispatch();
   const whatsFlag = useSelector(state => state.data.flag)
+  const query = useSelector(state => state.data.query)
 
     function handlerInput(e) {
       setIngredient(e.target.value);
@@ -30,15 +32,13 @@ const Hero = () => {
     }, [whatsFlag])
     
     function handlerClick() {
-      if (ingredient) {
-      dispatch(addQuerry(ingredient));
-      setIngredient('');
-      }
+        dispatch(fetchRecipe(ingredient))
+        setIngredient('');
     }
 
     const handleKeyPress = (e) => {
       if (e.key === 'Enter') {
-        dispatch(addQuerry(ingredient));
+        dispatch(fetchRecipe(ingredient))
         setIngredient('');
       }
     }

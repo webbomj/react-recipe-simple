@@ -1,4 +1,4 @@
-import {fetchData,setFlag} from '../Store/RecipesReducer'
+import {fetchData, setFlag} from '../Store/RecipesReducer'
 
 const fetchRecipe = (query) => {
   return function(dispatch) {

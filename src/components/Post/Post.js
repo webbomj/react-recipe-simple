@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Post.modules.css';
+import './Post.css';
 import Calories from '../ui/Icons/Calories/Calories';
 import Protein from '../ui/Icons/Protein/Protein';
 import Carbs from '../ui/Icons/Carbs/Carbs';
@@ -133,7 +133,7 @@ const Post = () => {
             </div>
           </div>
           <div className='ingredients__images'>{ing.map(el => {
-            return <img className='ingredients__img' src={el.image} key={el.food} alt={el.food}/>
+            return <img className='ingredients__img' src={el.image} key={el.image} alt={el.food}/>
           })}</div>
           <div className='ingredients__list'>
           <table className='ingredients__table'>

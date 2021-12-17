@@ -1,6 +1,6 @@
 import React from 'react';
 import RecipeItem from '../RecipeItem/RecipeItem';
-import './recipeList.modules.css'
+import './recipeList.css'
 import Preloader from '../ui/preloader/Preloader';
 import {useDispatch, useSelector } from 'react-redux';
 import fetchNextPage from '../AsyncActions/fetchNextPage';
