@@ -1,34 +1,31 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './search.css'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import fetchRecipe from '../AsyncActions/fetchReicepe';
 import { Link } from 'react-router-dom';
-
 
 const MainContent = () => {
   const [ingredient, setIngredient] = useState('');
   const dispatch = useDispatch();
-  const whatsFlag = useSelector(state => state.data.flag)
 
-    function handlerInput(e) {
-      setIngredient(e.target.value);
-    }
+  function handlerInput(e) {
+      setIngredient(e.target.value.trim().replace(/[а-яё]/gi, ''));
+  }
     
-    function handlerClick() {
+  function handlerClick() {
         dispatch(fetchRecipe(ingredient))
         setIngredient('');
-    }
+  }
 
-    const handleKeyPress = (e) => {
-      if (e.key === 'Enter') {
-        dispatch(fetchRecipe(ingredient))
-        setIngredient('');
-      }
-    }
+  // const handleKeyPress = (e) => {
+  //     if (e.key === 'Enter') {
+  //       dispatch(fetchRecipe(ingredient))
+  //       setIngredient('');
+  //     }
+  // }
 
-    return (
+  return (
     <section className='wrapper'>
-      
       <div className='main__search'>
         <div className='icon__search'>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -42,7 +39,8 @@ const MainContent = () => {
               placeholder='e.g. Chiken' 
               value={ingredient} 
               onChange={(e) => handlerInput(e)}
-              onKeyPress={(e) => handleKeyPress(e)}
+              // onKeyPress={(e) => handleKeyPress(e)
+              // }
             />  
           </div>
         <Link to="/"><button  onClick={() => handlerClick()} disabled={!ingredient}>Search</button></Link>

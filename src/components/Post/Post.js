@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './Post.css';
 import { useDispatch, useSelector} from 'react-redux';
 import { useParams} from 'react-router-dom';
@@ -12,6 +12,8 @@ import Weight from '../ui/Icons/Weight/Weight';
 import Clock from '../ui/Icons/Clock/Clock';
 import Flag from '../ui/Icons/Flag/Flag';
 import Preloader from '../ui/preloader/Preloader';
+import replaceQuantity from '../Store/RecipesReducer'
+import addPostData from '../Store/RecipesReducer'
 
 
 const Post = () => {
@@ -22,37 +24,35 @@ const Post = () => {
 
   useEffect(() => {
     dispatch(fetchOneRecipe(`https://api.edamam.com/api/recipes/v2/${postId}?type=public&app_id=9aa93e9c&app_key=98b8b38b27fcc09925f8d185765479ff`))
-  }, [])
+  }, [postId, dispatch])
 
   const recipe = useSelector(state => state.data.post.recipe);
+  const postData = useSelector(state => state.data.post);
   const isLoading = useSelector(state => state.data.loading);
   const [portions, setPortions] = useState(1);
   const [ing, setIng] = useState(arrIngredients);
 
- if (recipe !== null && recipe !== undefined) {
-  dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')))
-  if (recipe.images.REGULAR) {
-    imgSRC = recipe.images.REGULAR.url
-  }
-  if (recipe.ingredients) {
-    recipe.ingredients.forEach(el => {
-      let ingred = {
-        food: el.food,
-        quantity: el.quantity,
-        measure: el.measure,
-        image: el.image,
-      }
-      arrIngredients.push(ingred);
-    })
-  }
+  // useMemo(() => {
+  //   if (recipe !== null && recipe !== undefined) {
+  //     dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')))
+  //     if (recipe.images.REGULAR) {
+  //       imgSRC = recipe.images.REGULAR.url
+  //     }
+  //   arrIngredients = [...recipe.ingredients]
+  //   }
+  // },[arrIngredients])
+  
+
+  if (recipe !== null && recipe !== undefined) {
+    dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')))
+    if (recipe.images.REGULAR) {
+      imgSRC = recipe.images.REGULAR.url
+    }
+  arrIngredients = [...recipe.ingredients]
   }
 
   const incPortion = () => {
     setPortions(prev => prev + 1)
-    let arrNewQuantity = ing.map((el, i) => {
-      return {...el, quantity: el.quantity + arrIngredients[i].quantity}
-    })
-    setIng(arrNewQuantity)
   }
 
   const decPortion = () => {
@@ -60,10 +60,6 @@ const Post = () => {
       return
     } else {
       setPortions(prev => prev - 1)
-      let arrNewQuantity = ing.map((el, i) => {
-        return {...el, quantity: el.quantity - arrIngredients[i].quantity}
-      })
-      setIng(arrNewQuantity)
     }
   }
 
@@ -71,29 +67,29 @@ const Post = () => {
     <>
     {isLoading ? <Preloader/> : 
     <div className='post'>
-      <h2 className='post__title'>{recipe.label}</h2>
+      <h2 className='post__title'>{recipe?.label}</h2>
       <div className='post__total-wrapper'>
         <div className='post__total-info'>
           <Flag height='20pt' width='20pt' color='white'/>
           <span className='post__total-info--Weight'>
-            {recipe.cuisineType ? recipe.cuisineType : 'none'}
+            {recipe?.cuisineType ? recipe.cuisineType : 'none'}
           </span>
           <Weight height='20pt' width='20pt' color='white'/>
           <span className='post__total-info--Weight'>
-          {recipe.totalWeight ? Math.ceil(recipe.totalWeight) + ' g' : '-'}
+          {recipe?.totalWeight ? Math.ceil(recipe.totalWeight) + ' g' : '-'}
           </span>
           <Clock height='17pt' width='20pt' color='white'/>
           <span className='post__total-info--Weight'>
-          {recipe.totalTime ? Math.ceil(recipe.totalTime) + ' min' : '-'}
+          {recipe?.totalTime ? Math.ceil(recipe.totalTime) + ' min' : '-'}
           </span>
         </div>
       </div>
       
       <div className='post__wrapper'>
-        <div className='post__picture'><img className="post__img" src={imgSRC} alt={recipe.label}/></div>
+        <div className='post__picture'><img className="post__img" src={imgSRC} alt={recipe?.label}/></div>
         <div className='post__ingredients'>
           <ul className='ingredients__list'>
-            {recipe.ingredientLines.map((rec) => {
+            {recipe?.ingredientLines.map((rec) => {
               return <li className='ingredients__item' key={rec}>{rec}</li>
             })}
           </ul>
@@ -105,7 +101,7 @@ const Post = () => {
           <li className='resume__item'>
             <Calories height='25pt' width='25pt' color='white'/>
             <span className='resume__item--text'>
-              { recipe.totalNutrients.ENERC_KCAL.quantity ?
+              { recipe?.totalNutrients.ENERC_KCAL.quantity ?
                 Math.ceil((Math.ceil(recipe.totalNutrients.ENERC_KCAL.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' kcal'
                 : '-'
               }
@@ -114,7 +110,7 @@ const Post = () => {
           <li className='resume__item'>
             <Protein height='25pt' width='25pt' color='white'/>
             <span className='resume__item--text'>
-              {recipe.totalNutrients.PROCNT.quantity ?
+              {recipe?.totalNutrients.PROCNT.quantity ?
                 Math.ceil((Math.ceil(recipe.totalNutrients.PROCNT.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' g'
                : '-'}
             </span>
@@ -122,7 +118,7 @@ const Post = () => {
           <li className='resume__item'>
             <Fat height='25pt' width='25pt' color='white'/>
             <span className='resume__item--text'>
-              {recipe.totalNutrients.FAT.quantity ?
+              {recipe?.totalNutrients.FAT.quantity ?
                 Math.ceil((Math.ceil(recipe.totalNutrients.FAT.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' g'
               : '-'
               }
@@ -131,7 +127,7 @@ const Post = () => {
           <li className='resume__item'>
             <Carbs height='25pt' width='25pt' color='white'/>
             <span className='resume__item--text'>
-              {recipe.totalNutrients.CHOCDF.quantity ?
+              {recipe?.totalNutrients.CHOCDF.quantity ?
                 Math.ceil((Math.ceil(recipe.totalNutrients.CHOCDF.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' g'
               : '-'
               }
@@ -149,7 +145,7 @@ const Post = () => {
               <div className='ingredients-panel__button ingredients-panel__button--dec' onClick={() => decPortion()}><span className='ingredients-panel__button--text'>&#8722;</span></div>
             </div>
           </div>
-          <div className='ingredients__images'>{ing.map(el => {
+          <div className='ingredients__images'>{recipe?.ingredients.map(el => {
             return <img className='ingredients__img' src={el.image} key={el.image} alt={el.food}/>
           })}</div>
           <div className='ingredients__list'>
@@ -160,7 +156,17 @@ const Post = () => {
                 <td className='ingredients__table--title'></td>
                 <td className='ingredients__table--title title__Measure'></td>
               </tr>
-                {ing.map(el => {
+
+              { recipe?.ingredients.map(el => {
+                return  <tr key={Date.now() + Math.random()}>
+                  <td  className='ingredients__table--ingredients'>{el.food.slice(0, 1).toUpperCase() + el.food.slice(1)}</td>
+                  <td  className='ingredients__table--ingredients ingredients__table--quantity'>{el.quantity * portions}</td>
+                  <td  className='ingredients__table--ingredients ingredients__table--measure'>{el.measure === '<unit>' ? 'unit' : el.measure}</td>
+                 </tr>
+              })}
+          
+
+                {/* {ing.map(el => {
                   return (
                     <tr key={el.food}>
                     <td  className='ingredients__table--ingredients'>{el.food.slice(0, 1).toUpperCase() + el.food.slice(1)}</td>
@@ -168,7 +174,7 @@ const Post = () => {
                     <td  className='ingredients__table--ingredients ingredients__table--measure'>{el.measure === '<unit>' ? 'unit' : el.measure}</td>
                     </tr>
                   ) 
-                })}
+                })} */}
             </tbody>
           </table>
           </div>

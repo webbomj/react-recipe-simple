@@ -1,18 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Route, Routes} from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
 import Footer from './components/Footer/Footer';
 import Post from './components/Post/Post';
 import ContentWrapper from './components/ContentWrapper/ContentWrapper'
-import { useDispatch, useSelector } from 'react-redux';
-import fetchRecipe from './components/AsyncActions/fetchReicepe'
 import Search from './components/Search/Search';
 import Title from './components/Title/Title';
+import RecipeList from './components/RecipeList/RecipeList';
 
 function App() {
-
 
   return (
     <div className="App">
@@ -21,7 +18,7 @@ function App() {
       <Title/>
       <Search/>
         <Routes>
-          <Route path='/' element={<Hero/>}></Route>
+          <Route path='/' element={<RecipeList/>}></Route>
           <Route path='/:postId' element={<Post/>}></Route>
         </Routes>
       </ContentWrapper>

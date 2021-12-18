@@ -1,4 +1,4 @@
-import {fetchData, setFlag, setLoading} from '../Store/RecipesReducer'
+import {fetchData, setLoading} from '../Store/RecipesReducer'
 
 const fetchNextPage = (url) => {
   return function(dispatch) {
@@ -7,7 +7,6 @@ const fetchNextPage = (url) => {
       .then(response => response.json())
       .then(json => dispatch(fetchData(json)))
       .then(() => dispatch(setLoading(false)))
-      .then(() => dispatch(setFlag('list')))
   }
 }
 

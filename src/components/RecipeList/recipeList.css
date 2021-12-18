@@ -25,3 +25,18 @@
   height: 100%;
   color: #6935FD;
 }
+
+.mainContent-wrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 670px;
+}
+
+.main__recipe {
+  margin: 0;
+  margin-top: 40px;
+  width: 100%;
+}

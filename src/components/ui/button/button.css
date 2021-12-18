@@ -3,10 +3,10 @@
   text-align: center;
   font-size: 18px;
   color: #6935FD;
-  height: 48px;
+  height: 100%;
   width: 170px;
   border: 2px solid #6935FD;
   border-radius: 2px;
-  padding: 12px 15px 10px 15px;
+  padding: 14px 15px 10px 15px;
   text-decoration: none;
 }
