@@ -4,13 +4,15 @@ export const ADD_POSTDATA = 'ADD_POSTDATA';
 export const SET_POSTID = 'SET_POSTID';
 export const SET_LOADING = 'SET_LOADING';
 export const REPLACE_QUANTITY = 'REPLACE_QUANTITY';
+export const SET_MODAL = 'SET_MODAL';
 
 const initialState = {
   data: {},
-  query: 'chicken',
+  query: 'ice cream',
   loading: false,
   post: {},
   postId: '',
+  isModal: false,
 
 };
 
@@ -26,6 +28,8 @@ const reducer = (state = initialState, action) => {
       return {...state, postId: action.payload}
     case SET_LOADING:
       return {...state, loading: action.payload}
+    case SET_MODAL:
+      return {...state, isModal: action.payload}
     default:
       return state
   }
@@ -36,6 +40,7 @@ export const addQuerry = (payload) => ( {type: ADD_QUERY, payload} )
 export const addPostData = (payload) => ( {type: ADD_POSTDATA, payload} )
 export const setPostId = (payload) => ( {type: SET_POSTID, payload} )
 export const setLoading = (payload) => ( {type: SET_LOADING, payload} )
+export const setModal = (payload) => ( {type: SET_MODAL, payload} )
 
 export default reducer;
 

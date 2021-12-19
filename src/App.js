@@ -8,6 +8,7 @@ import ContentWrapper from './components/ContentWrapper/ContentWrapper'
 import Search from './components/Search/Search';
 import Title from './components/Title/Title';
 import RecipeList from './components/RecipeList/RecipeList';
+import ModalWindow from './components/ModalWindow/ModalWindow';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/:postId' element={<Post/>}></Route>
         </Routes>
       </ContentWrapper>
+      <ModalWindow/>
       <Footer/>
     </div>
   );
