@@ -122,6 +122,7 @@
 .modalWindow__button {
   width: 70%;
   height: 40px;
+  margin-top: 15px;
   border-radius: 10px;
   border: 2px solid #6935FD;
   text-align: center;

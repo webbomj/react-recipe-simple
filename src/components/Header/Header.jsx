@@ -22,7 +22,7 @@ const Header = () => {
         <ul className='header__navigation-list'>
           <li className='header__navigation-item'><Link to='/'>Home</Link></li>
           <li className='header__navigation-item'><Link to='#' onClick={() => dispatch(setModal(!isModal))}>Buy recipie`s book</Link></li>
-          <li className='header__navigation-item'><Link to='/'>Some</Link></li>
+          <li className='header__navigation-item'><Link to='/favorites'>Favorites</Link></li>
         </ul>
       </nav>
       <div>

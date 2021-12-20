@@ -5,6 +5,8 @@ export const SET_POSTID = 'SET_POSTID';
 export const SET_LOADING = 'SET_LOADING';
 export const REPLACE_QUANTITY = 'REPLACE_QUANTITY';
 export const SET_MODAL = 'SET_MODAL';
+export const SET_FAVORITES = 'SET_FAVORITES';
+export const REMOVE_FAVORITES = 'REMOVE_FAVORITES';
 
 const initialState = {
   data: {},
@@ -13,6 +15,7 @@ const initialState = {
   post: {},
   postId: '',
   isModal: false,
+  favorites: [],
 
 };
 
@@ -30,6 +33,10 @@ const reducer = (state = initialState, action) => {
       return {...state, loading: action.payload}
     case SET_MODAL:
       return {...state, isModal: action.payload}
+    case SET_FAVORITES:
+      return {...state, favorites: action.payload}
+    case REMOVE_FAVORITES:
+      return {...state, favorites: [...state.favorites.filter(el => el !== action.payload[0])]}
     default:
       return state
   }
@@ -41,6 +48,8 @@ export const addPostData = (payload) => ( {type: ADD_POSTDATA, payload} )
 export const setPostId = (payload) => ( {type: SET_POSTID, payload} )
 export const setLoading = (payload) => ( {type: SET_LOADING, payload} )
 export const setModal = (payload) => ( {type: SET_MODAL, payload} )
+export const setFavorite = (payload) => ( {type: SET_FAVORITES, payload} )
+export const removeFavorite = (payload) => ( {type: REMOVE_FAVORITES, payload} )
 
 export default reducer;
 

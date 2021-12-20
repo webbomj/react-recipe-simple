@@ -9,6 +9,7 @@ import Search from './components/Search/Search';
 import Title from './components/Title/Title';
 import RecipeList from './components/RecipeList/RecipeList';
 import ModalWindow from './components/ModalWindow/ModalWindow';
+import Favorites from './components/Favorites/Favorites';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path='/' element={<RecipeList/>}></Route>
           <Route path='/:postId' element={<Post/>}></Route>
+          <Route path='/favorites' element={<Favorites/>}></Route>
         </Routes>
       </ContentWrapper>
       <ModalWindow/>

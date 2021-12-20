@@ -6,6 +6,7 @@ import Clock from '../ui/Icons/Clock/Clock';
 import { useDispatch} from 'react-redux';
 import fetchOneRecipe from '../AsyncActions/fetchOneRecipe';
 import {setPostId} from '../Store/RecipesReducer'
+import Favorites from '../ui/Icons/Favorites/Favorites';
 
 
 const RecipeItem = ({data}) => {
@@ -24,12 +25,26 @@ const RecipeItem = ({data}) => {
     srcImage = recipe.images.SMALL.url;
   }
 
+  const addFavorites = () => {
+    localStorage.setItem(recipe.label, JSON.stringify(data))
+    
+    for(let i = 0; i < localStorage.length; i++) {
+      console.log(localStorage.key(i))
+    }
+    // localStorage.setItem('test', 22)
+  }
+
   return (    
       <div className="card">
         <div className="card__image">
           <Link to={recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')}>
             <img src={srcImage} alt={recipe.label} onClick={() => handlerClick(_links.self.href)}/>
           </Link>
+          <div className="card__icons">
+            <div className="card__icons--favorite" onClick={() => addFavorites()}>
+              <Favorites width='30px' height='30px' color='white' />
+            </div>
+          </div>
         </div>
         <div className="card__content">
           <span className="card__title" onClick={() => handlerClick(_links.self.href)}>
