@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './favoritesPanel.css'
 import Trash from '../ui/Icons/Trash/Trash'
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFavorite} from '../Store/RecipesReducer';
+import { removeFavorite, localStorageItems} from '../Store/RecipesReducer';
 
 const FavoritesPanel = () => {
 
@@ -13,7 +13,6 @@ const FavoritesPanel = () => {
 
   const chooseAll = () => {
     let allCheckBoxes = document.querySelectorAll('.favoriteList__checkbox-label');
-    console.log(mainCheckBox)
     if (isCheacked) {
       allCheckBoxes.forEach(el => {
         el.classList.remove('favoriteList__checkboxes')
@@ -34,8 +33,9 @@ const FavoritesPanel = () => {
     let allRemoveItems = []
     mainCheckBox.classList.remove('favoriteList__checkboxes')
     allCheckBoxes.forEach(element => {
-      allRemoveItems.push(favorites.filter(el => el.recipe.label === element.htmlFor));
+      allRemoveItems.push(favorites.filter(el => el.recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '') === element.htmlFor));
       localStorage.removeItem(element.htmlFor);
+      dispatch(localStorageItems(localStorage.length))
     })
     allRemoveItems.forEach(el => {
       dispatch(removeFavorite(el))})
@@ -48,7 +48,7 @@ const FavoritesPanel = () => {
         <label htmlFor='favoritesPanel__input' onClick={() => chooseAll()}></label>
         <span className='favoritesPanel__link' onClick={() => chooseAll()}>Choose all</span>
       </div>
-      <div onClick={() => removeAll()}>
+      <div className='favoritesPanel__trash-ico' onClick={() => removeAll()}>
         <Trash width='25px' height='25px' color='#e86a23'/>
       </div>
     </div>

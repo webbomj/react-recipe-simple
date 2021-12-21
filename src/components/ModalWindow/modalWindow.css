@@ -80,11 +80,21 @@
   width: 5px;
   background-color: #6935FD;
 }
+.modalWindow__close-button:hover::before,
+.modalWindow__close-button:hover::after {
+  background-color: #e86a23;
+}
+
+.modalWindow__main {
+  height: 100%;
+}
 
 .modalWindow__title {
+  display: block;
   font-size: 30px;
   font-weight: bold;
   color: #6935FD;
+
   text-align: center;
 }
 
@@ -106,18 +116,24 @@
 }
 
 .modalWindow__input:focus {
-  outline: #351490;
-  outline-width: 2px;
-}
+  /* outline: tomato; */
+  outline: none;
+  border-color: #e86a23;
+  border-width: 3px;
+}         
 
 .modalWindow__label {
+  width: 100%;
   color: red;
   visibility: hidden;
+  font-size: 12px;
+  margin-left: 60px;
 }
 
 .modalWindow__label--error {
   visibility: visible;
 }
+
 
 .modalWindow__button {
   width: 70%;
@@ -132,4 +148,18 @@
 
 .modalWindow__button:hover {
   cursor: pointer;
+  border: 2px solid #e86a23;
+  background-color: #e86a23;
+  color: white;
+}
+
+.success-modal {
+  margin-top: 15%;
+  height: 100%;
+
+}
+
+.success-modal__text {
+  font-weight: bold;
+  font-size: 20px;
 }

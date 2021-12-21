@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './footer.css'
 import { setModal } from '../Store/RecipesReducer';
+import ButtonUp from '../ui/buttonUp/ButtonUp';
 
 const Footer = () => {
 
@@ -17,11 +18,11 @@ const Footer = () => {
           <ul className='footer__list'>
             <li className='footer__item'><Link to='/'>Home</Link></li>
             <li className='footer__item'><Link to='#' onClick={() => dispatch(setModal(!isModal))}>Buy recipie`s book</Link></li>
-            <li className='footer__item'><Link to='/'>Terms & Conditions</Link></li>
-            <li className='footer__item'><Link to='/'>Privacy Policy</Link></li>
+            <li className='footer__item'><Link to='/favorites'>Favorites</Link></li>
           </ul>
         </div>
       </div>
+      <ButtonUp width='50px' height='50px' color='#e86a23'/>
     </footer>
   );
 };

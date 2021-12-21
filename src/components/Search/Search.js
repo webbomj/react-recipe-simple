@@ -17,13 +17,6 @@ const MainContent = () => {
         setIngredient('');
   }
 
-  // const handleKeyPress = (e) => {
-  //     if (e.key === 'Enter') {
-  //       dispatch(fetchRecipe(ingredient))
-  //       setIngredient('');
-  //     }
-  // }
-
   return (
     <section className='wrapper'>
       <div className='main__search'>
@@ -39,8 +32,7 @@ const MainContent = () => {
               placeholder='e.g. Chiken' 
               value={ingredient} 
               onChange={(e) => handlerInput(e)}
-              // onKeyPress={(e) => handleKeyPress(e)
-              // }
+            
             />  
           </div>
         <Link to="/"><button  onClick={() => handlerClick()} disabled={!ingredient}>Search</button></Link>

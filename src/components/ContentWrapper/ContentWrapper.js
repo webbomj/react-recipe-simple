@@ -1,4 +1,4 @@
-import React, { children } from 'react';
+import React from 'react';
 import './contentWrapper.css'
 
 const ContentWrapper = ({children}) => {

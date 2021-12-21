@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FavoritesList from '../FavoritesList/FavoritesList';
 import FavoritesPanel from '../FavoritesPanel/FavoritesPanel';
 import './favorites.css'
-import { setFavorite } from '../Store/RecipesReducer';
+import { setFavorite, localStorageItems } from '../Store/RecipesReducer';
 
 const Favorites = () => {
   let dataLocalStorage = []
@@ -17,12 +17,14 @@ useEffect(() => {
     dataLocalStorage.push(JSON.parse(localStorage.getItem(allKeysLocalStorage[i])))
   }
   dispatch(setFavorite(dataLocalStorage))
-  console.log(dataLocalStorage)
+  window.scrollTo(0, 0)
 }, [])
 
+
   const deleteLocalStorageItem = (keyDelete) => {
-    dispatch(setFavorite(data.filter(el => el.recipe.label !== keyDelete)))
+    dispatch(setFavorite(data.filter(el => el.recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')!== keyDelete)))
     localStorage.removeItem(keyDelete);
+    dispatch(localStorageItems(localStorage.length))
   }
 
   return (

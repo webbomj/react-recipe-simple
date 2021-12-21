@@ -1,3 +1,6 @@
-svg:hover g{
-fill : yellow;
+.favoritesIcon:hover {
+  cursor: pointer;
+
 }
+
+

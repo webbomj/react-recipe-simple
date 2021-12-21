@@ -21,12 +21,20 @@ const RecipeList = () => {
     }
   }, [query, dispatch]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   
   let nextPageUrl = '' ;
   if (_links) {
     nextPageUrl = _links?.next?.href
   } else {
     nextPageUrl = 'http://localhost:3000/'
+  }
+
+  const clickNextPage = () => {
+    dispatch(fetchNextPage(nextPageUrl))
+    window.scrollTo(0, 0)
   }
 
   return (
@@ -39,12 +47,12 @@ const RecipeList = () => {
         data?.map(el => {
           return <RecipeItem 
                   data={el} 
-                  key={el.recipe.calories}
+                  key={el.recipe.calories * Math.random()}
                   />
         })}
         {isLoading ? 
         null :
-        <div className='cardNext' onClick={() => dispatch(fetchNextPage(nextPageUrl))}>
+        <div className='cardNext' onClick={() => clickNextPage()}>
           <nav className='cardNext__nav'>Next Page »</nav>
         </div>
         }

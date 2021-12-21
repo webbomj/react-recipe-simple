@@ -7,15 +7,17 @@ export const REPLACE_QUANTITY = 'REPLACE_QUANTITY';
 export const SET_MODAL = 'SET_MODAL';
 export const SET_FAVORITES = 'SET_FAVORITES';
 export const REMOVE_FAVORITES = 'REMOVE_FAVORITES';
+export const LOCAL_STORE_ITEMS = 'LOCAL_STORE_ITEMS';
 
 const initialState = {
   data: {},
-  query: 'ice cream',
+  query: 'cake',
   loading: false,
   post: {},
   postId: '',
   isModal: false,
   favorites: [],
+  localStoreItems: 0,
 
 };
 
@@ -37,6 +39,8 @@ const reducer = (state = initialState, action) => {
       return {...state, favorites: action.payload}
     case REMOVE_FAVORITES:
       return {...state, favorites: [...state.favorites.filter(el => el !== action.payload[0])]}
+    case LOCAL_STORE_ITEMS:
+      return {...state, localStoreItems: action.payload}
     default:
       return state
   }
@@ -50,6 +54,7 @@ export const setLoading = (payload) => ( {type: SET_LOADING, payload} )
 export const setModal = (payload) => ( {type: SET_MODAL, payload} )
 export const setFavorite = (payload) => ( {type: SET_FAVORITES, payload} )
 export const removeFavorite = (payload) => ( {type: REMOVE_FAVORITES, payload} )
+export const localStorageItems = (payload) => ( {type: LOCAL_STORE_ITEMS, payload} )
 
 export default reducer;
 

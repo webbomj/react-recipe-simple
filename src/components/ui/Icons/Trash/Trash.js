@@ -2,7 +2,7 @@ import React from 'react';
 
 const Trash = ({width, height, color}) => {
   return (
-    <div>
+
       <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width={width} height={height} viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
         <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill={color} stroke="none">
         <path d="M1832 4740 c-48 -30 -72 -75 -72 -140 0 -65 24 -110 72 -140 32 -19 52 -20 728 -20 676 0 696 1 728 20 48 30 72 75 72 140 0 65 -24 110 -72 140 -32 19 -52 20 -728 20 -676 0 -696 -1 -728 -20z"/>
@@ -11,7 +11,7 @@ const Trash = ({width, height, color}) => {
         <path d="M3032 3220 c-18 -11 -41 -34 -52 -52 -19 -32 -20 -52 -20 -888 0 -836 1 -856 20 -888 30 -48 75 -72 140 -72 65 0 110 24 140 72 19 32 20 52 20 888 0 836 -1 856 -20 888 -30 48 -75 72 -140 72 -37 0 -66 -6 -88 -20z"/>
         </g>
       </svg>
-    </div>
+
   );
 };
 

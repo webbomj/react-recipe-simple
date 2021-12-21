@@ -32,6 +32,12 @@
   text-decoration: none;
 }
 
+.footer__item a:hover {
+  color: #e86a23;
+}
+
+
+
 .footer__left {
   display: flex;
   justify-content: center;

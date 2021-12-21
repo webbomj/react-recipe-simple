@@ -1,0 +1,22 @@
+.buttonUp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  visibility: hidden;
+  background-color: white;
+  border-radius: 30%;
+  height: 50px;
+}
+
+.buttonUp:hover {
+  cursor: pointer;
+}
+
+.back_to_top-show {
+  visibility: visible;
+}
+
+
+.buttonUp:hover svg g {
+  fill: black;
+}

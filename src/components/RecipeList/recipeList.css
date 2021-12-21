@@ -15,6 +15,7 @@
 
 .cardNext:hover {
   cursor: pointer;
+  background-color: #6935FD;
 }
 
 .cardNext__nav {
@@ -24,6 +25,10 @@
   align-items: center;
   height: 100%;
   color: #6935FD;
+}
+
+.cardNext__nav:hover {
+  color: white;
 }
 
 .mainContent-wrapper {

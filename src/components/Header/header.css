@@ -17,6 +17,10 @@
   padding: 0;
 }
 
+.header__navigation-item {
+  position: relative;
+}
+
 .header__navigation-item:not(:last-child) {
   margin-right: 54px;
 }
@@ -26,4 +30,32 @@
   color: #272727;
   font-weight: 400;
   text-decoration: none;
+}
+
+.header__navigation-item a:hover {
+  color: #6935FD;
+}
+
+
+.header__navigation-favorites {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -15px;
+  right: -25px;
+  color: white;
+  width: 25px;
+  height: 25px;
+  background-color: #e86a23;
+  border-radius: 50%;
+}
+
+.header__navigation-favorites:hover {
+  background-color: #6935FD;
+  cursor: pointer;
+}
+
+.header__navigation-favorites-null {
+
 }

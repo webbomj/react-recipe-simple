@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Post.css';
 import { useDispatch, useSelector} from 'react-redux';
 import { useParams} from 'react-router-dom';
@@ -12,8 +12,8 @@ import Weight from '../ui/Icons/Weight/Weight';
 import Clock from '../ui/Icons/Clock/Clock';
 import Flag from '../ui/Icons/Flag/Flag';
 import Preloader from '../ui/preloader/Preloader';
-import replaceQuantity from '../Store/RecipesReducer'
-import addPostData from '../Store/RecipesReducer'
+import Favorites from '../ui/Icons/Favorites/Favorites';
+import {localStorageItems} from '../Store/RecipesReducer'
 
 
 const Post = () => {
@@ -26,23 +26,18 @@ const Post = () => {
     dispatch(fetchOneRecipe(`https://api.edamam.com/api/recipes/v2/${postId}?type=public&app_id=9aa93e9c&app_key=98b8b38b27fcc09925f8d185765479ff`))
   }, [postId, dispatch])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const recipe = useSelector(state => state.data.post.recipe);
   const postData = useSelector(state => state.data.post);
   const isLoading = useSelector(state => state.data.loading);
   const [portions, setPortions] = useState(1);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [ing, setIng] = useState(arrIngredients);
 
-  // useMemo(() => {
-  //   if (recipe !== null && recipe !== undefined) {
-  //     dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')))
-  //     if (recipe.images.REGULAR) {
-  //       imgSRC = recipe.images.REGULAR.url
-  //     }
-  //   arrIngredients = [...recipe.ingredients]
-  //   }
-  // },[arrIngredients])
   
-
   if (recipe !== null && recipe !== undefined) {
     dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')))
     if (recipe.images.REGULAR) {
@@ -63,11 +58,35 @@ const Post = () => {
     }
   }
 
+  const addFavorites = () => {
+    let localStorageItem = localStorage.getItem(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
+    if (localStorageItem !== null) {
+      localStorage.removeItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''))
+    } else {
+      localStorage.setItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''), JSON.stringify(postData))
+    }
+    dispatch(localStorageItems(localStorage.length))
+    setIsFavorite(!isFavorite)
+  }
+
+  useEffect(() =>{
+    let localStorageItem = localStorage.getItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''))
+    if (localStorageItem !== null) {
+      setIsFavorite(true)
+    }
+  }, [recipe?.uri])
+
   return (
     <>
     {isLoading ? <Preloader/> : 
     <div className='post'>
       <h2 className='post__title'>{recipe?.label}</h2>
+      <div className={isFavorite === true ? 'card__icons card__icons--active' : 'card__icons'}>
+            <div className='post__title--favoriteIcon' onClick={() => addFavorites()}>
+              <Favorites width='30px' height='30px' color='white' />
+              <span className='tooltip-text'>{isFavorite ? 'Remove from favorites' : 'Add from favorites'}</span>
+            </div>
+      </div>
       <div className='post__total-wrapper'>
         <div className='post__total-info'>
           <Flag height='20pt' width='20pt' color='white'/>

@@ -8,12 +8,13 @@ const ModalWindow = () => {
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [isModalWindows, setIsModalWindow] = useState(true);
   const isModal = useSelector(state => state.data.isModal)
   const dispatch = useDispatch()
   
   const handleClick = (e) => {
     e.preventDefault()
-    if (name.length > 30 || name.length < 3) {
+    if (name.length > 30 || name.length < 2) {
       let label = document.querySelector('#modalInput-name');
       label.classList.add('modalWindow__label--error');
       setName('')
@@ -33,8 +34,9 @@ const ModalWindow = () => {
         return
     }
 
-    if (name.trim().length > 3 && name.trim().length < 30 && phone.trim().match(/\d/g).length === 11 ) {
+    if (name.trim().length >= 2 && name.trim().length < 30 && phone.trim().match(/\d/g).length === 11 ) {
       console.log('оправили данные, поменялся в модалке контент на спасибо за заказ. мы вам перезвоним в течении 15 минут')
+      setIsModalWindow(false);
     }
     
   }
@@ -76,21 +78,28 @@ const ModalWindow = () => {
       let modal = document.querySelector('.modalWindow__wrapper');
       modal.classList.add('modalWindow-disabled')
       dispatch(setModal(false))
+      setIsModalWindow(true);
 
     }
   }
+
+
+  
 
   return ( 
     <div className={isModal ? 'modalWindow__wrapper' : 'modalWindow__wrapper modalWindow-disabled' }>
       <div className='modalWindow__back' id="modalWindow__back" onClick={(e) => clickCloseModal(e)} >
       </div>
+      
       <div className='modalWindow' >
         <div className='modalWindow__close-button' id="modalWindow__close-button"  onClick={(e) => clickCloseModal(e)}></div>
+        <div className='modalWindow__main'>
+        {isModalWindows ? <>
         <span className='modalWindow__title'>Buy recipie`s book</span>
         <form className='modalWindow-form'>
-          <label className='modalWindow__label' htmlFor='modal-name' id="modalInput-name">Name must be between 3 characters and 30</label>
+          <label className='modalWindow__label' htmlFor='modal-name' id="modalInput-name"><span className='modalWindow__label--text'>Name must be between 3 characters and 30</span></label>
           <input className='modalWindow__input' type="text" id='modal-name' placeholder='Your name' value={name} onChange={(e) => handleNameInput(e)}/>
-          <label className='modalWindow__label' htmlFor='modal-phone' id="modalInput-phone">The phone number must be in the format +7 (999) -999-99-99</label>
+          <label className='modalWindow__label' htmlFor='modal-phone' id="modalInput-phone"><span className='modalWindow__label--text'>The phone number must be in the format +7 (999) -999-99-99</span></label>
           {/* <input className='modalWindow__input' type='tel' id='modal-phone' placeholder="Your phone number" value={phone} onChange={(e) => handlePhoneInput(e)}/> */}
           <InputMask 
             mask="+7(999)-999-99-99" 
@@ -99,7 +108,17 @@ const ModalWindow = () => {
             />
           <button className='modalWindow__button' onClick={(e) => handleClick(e)}>Buy</button>
         </form>
+        </>
+        :
+        <div className='success-modal'>
+          <span className='success-modal__text'>The data has been sent. You will be called back within 15 minutes!</span>
+        </div>
+        
+        }
+        </div>
+      
       </div>
+
     </div>
 
   );

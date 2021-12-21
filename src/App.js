@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Route, Routes} from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
@@ -12,6 +12,18 @@ import ModalWindow from './components/ModalWindow/ModalWindow';
 import Favorites from './components/Favorites/Favorites';
 
 function App() {
+
+  useEffect(() => {
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollUpButton = document.querySelector('.buttonUp');
+      if (scrolled >= 300) {
+          scrollUpButton.classList.add('back_to_top-show');
+      } else {
+          scrollUpButton.classList.remove('back_to_top-show');
+      }
+  });
+  }, [])
 
   return (
     <div className="App">

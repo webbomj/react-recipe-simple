@@ -350,10 +350,7 @@ template {
 }
 
 .App {
-  
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
+
   position: relative;
   max-width: 1600px;
   margin: 0 auto;
