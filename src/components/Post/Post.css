@@ -163,8 +163,8 @@ padding: 0 40px 0 5px;
 
 .ingredients-panel__button:hover {
   cursor: pointer;
-  border: 1px solid black;
-  background-color: black;
+  border: 1px solid var(--black);
+  background-color: var(--black);
 }
 
 .ingredients-panel__button--dec {

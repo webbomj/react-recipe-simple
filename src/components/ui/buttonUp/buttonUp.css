@@ -13,7 +13,7 @@
 }
 
 .buttonUp:hover svg g {
-  fill: black;
+  fill: var(--black);
 }
 
 .back_to_top-show {

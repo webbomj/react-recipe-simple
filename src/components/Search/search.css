@@ -80,8 +80,8 @@
 
 .main__search button:hover {
   cursor: pointer;
-  background-color: black;
-  border: 1px solid black;
+  background-color: var(--black);
+  border: 1px solid var(--black);
 }
 
 .main__search button:disabled {

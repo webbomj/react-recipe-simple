@@ -176,12 +176,12 @@ const Logo = () => {
   <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="#c5b1fd" stroke="none" />
   <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="#cfbffd" stroke="none" />
   <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="#003300" stroke="none" />
-  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--black)000" stroke="none" />
-  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--black)033" stroke="none" />
-  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--black)066" stroke="none" />
-  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--black)099" stroke="none" />
-  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--black)0cc" stroke="none" />
-  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--black)0ff" stroke="none" />
+  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--var(--black))000" stroke="none" />
+  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--var(--black))033" stroke="none" />
+  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--var(--black))066" stroke="none" />
+  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--var(--black))099" stroke="none" />
+  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--var(--black))0cc" stroke="none" />
+  <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="var(--var(--black))0ff" stroke="none" />
   <g transform="translate(0.000000,75.000000) scale(0.100000,-0.100000)" fill="#003333" stroke="none" />
 </svg>
   );

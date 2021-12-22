@@ -1,6 +1,10 @@
 :root {
-  --main-color: #6935FD;
+  /* --main-color: #6935FD;
   --second-color: white;
   --orange: #e86a23;
-  --black: var(#000);
+  --black: #000; */
+  --main-color: rgb(6, 135, 255);
+  --second-color: white;
+  --orange: #e86a23;;
+  --black: black;
 }

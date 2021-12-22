@@ -176,7 +176,15 @@ const Post = () => {
               { recipe?.ingredients.map(el => {
                 return  <tr key={Date.now() + Math.random()}>
                   <td  className='ingredients__table--ingredients'>{el.food.slice(0, 1).toUpperCase() + el.food.slice(1)}</td>
-                  <td  className='ingredients__table--ingredients ingredients__table--quantity'>{Math.round(el.quantity.toFixed(1) * portions)}</td>
+                  <td  className='ingredients__table--ingredients ingredients__table--quantity'>
+                    {/* {Math.round(el.quantity.toFixed(1) * portions)} */}
+                    {String((el.quantity.toFixed(2) * portions).toFixed(1)).split('.')[1] == 0 
+                      ? 
+                      Number(String((el.quantity.toFixed(2) * portions).toFixed(1)).split('.')[0])
+                      : 
+                      (el.quantity.toFixed(1) * portions).toFixed(1)
+                     }
+                  </td>
                   <td  className='ingredients__table--ingredients ingredients__table--measure'>{el.measure === '<unit>' ? 'unit' : el.measure}</td>
                  </tr>
               })}

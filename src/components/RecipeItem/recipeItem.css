@@ -75,7 +75,7 @@
 
 .card__icons:hover {
   cursor: pointer;
-  background-color: black;
+  background-color: var(--black);
 }
 
 .card__icons--active {
