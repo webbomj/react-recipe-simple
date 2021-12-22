@@ -37,7 +37,7 @@ const Header = () => {
         </ul>
       </nav>
       <div className='header__button'>
-        <Button text='GitHub' href='https://webbomj.github.io/react-recipe-simple' color='white'/>
+        <Button text='GitHub' href='https://webbomj.github.io/react-recipe-simple' color='var(--second-color)'/>
       </div>
     </header>
   );

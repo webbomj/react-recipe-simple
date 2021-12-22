@@ -28,12 +28,12 @@
 }
 
 .footer__item a {
-  color: #6935FD;
+  color: var(--main-color);
   text-decoration: none;
 }
 
 .footer__item a:hover {
-  color: #e86a23;
+  color: var(--orange);
 }
 
 .footer__left {

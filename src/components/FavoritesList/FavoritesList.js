@@ -38,7 +38,7 @@ const FavoritesList = ({data, removeKey}) => {
       </div>
       <div className='favoriteList__icons' onClick={() => removeKey(data.recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''))}>
         <div className='favoriteList__icon-favorite'>
-          <Favorites width='20px' height='20px' color='white'/>
+          <Favorites width='20px' height='20px' color='var(--second-color)'/>
           <span className='tooltip-text'>Remove from favorites</span>
         </div>
       </div>

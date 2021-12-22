@@ -11,7 +11,14 @@ const fetchRecipe = (query) => {
           return response.json();
         }     
       })
-      .then(json => dispatch(fetchData(json)))
+      .then(json => {
+        if (json.count === 0) {
+          dispatch(setError(['error', `404`]));
+        } else {
+          dispatch(fetchData(json))
+        }
+        
+      })
       .then(() => dispatch(setLoading(false)))
       .catch((e) => {
         dispatch(setError(['error', `${e}`]));

@@ -55,7 +55,7 @@ const RecipeItem = ({data}) => {
           </Link>
           <div className={isFavorite === true ? 'card__icons card__icons--active' : 'card__icons'} id={recipe.label} >
             <div  className="card__icons--favorite" onClick={() => addFavorites()}>
-              <Favorites width='30px' height='30px' color='white' />
+              <Favorites width='30px' height='30px' color='var(--second-color)' />
               <span className='tooltip-text'>{isFavorite ? 'Remove from favorites' : 'Add from favorites'}</span>
             </div>
           </div>
@@ -67,11 +67,11 @@ const RecipeItem = ({data}) => {
             </Link>
           </span>
           <div className='card__info'>
-            <div className='card__lines'><Calories height='16pt' width='16pt' color='#6935FD'/>
+            <div className='card__lines'><Calories height='16pt' width='16pt' color='var(--main-color)'/>
               <span className='card__lines-info'>{recipe.calories === 0.0 ? 0 : recipe.calories.toFixed()} kcal
               </span>
             </div>
-            <div className='card__lines'><Clock height='16pt' width='16pt' color='#6935FD'/>
+            <div className='card__lines'><Clock height='16pt' width='16pt' color='var(--main-color)'/>
               <span className='card__lines-info'>{recipe.totalTime === 0.0 ? ' -' : recipe.totalTime.toFixed() + ' min'}
               </span>
             </div>

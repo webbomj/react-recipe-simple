@@ -82,21 +82,21 @@ const Post = () => {
       <h2 className='post__title'>{recipe?.label}</h2>
       <div className={isFavorite === true ? 'card__icons card__icons--active' : 'card__icons'}>
             <div className='post__title--favoriteIcon' onClick={() => addFavorites()}>
-              <Favorites width='30px' height='30px' color='white' />
+              <Favorites width='30px' height='30px' color='var(--second-color)' />
               <span className='tooltip-text'>{isFavorite ? 'Remove from favorites' : 'Add from favorites'}</span>
             </div>
       </div>
       <div className='post__total-wrapper'>
         <div className='post__total-info'>
-          <Flag height='20pt' width='20pt' color='white'/>
+          <Flag height='20pt' width='20pt' color='var(--second-color)'/>
           <span className='post__total-info--Weight'>
             {recipe?.cuisineType ? recipe.cuisineType : 'none'}
           </span>
-          <Weight height='20pt' width='20pt' color='white'/>
+          <Weight height='20pt' width='20pt' color='var(--second-color)'/>
           <span className='post__total-info--Weight'>
           {recipe?.totalWeight ? Math.ceil(recipe.totalWeight) + ' g' : '-'}
           </span>
-          <Clock height='17pt' width='20pt' color='white'/>
+          <Clock height='17pt' width='20pt' color='var(--second-color)'/>
           <span className='post__total-info--Weight'>
           {recipe?.totalTime ? Math.ceil(recipe.totalTime) + ' min' : '-'}
           </span>
@@ -116,7 +116,7 @@ const Post = () => {
       <div className='resume'>
         <ul className='resume__list'>
           <li className='resume__item'>
-            <Calories height='25pt' width='25pt' color='white'/>
+            <Calories height='25pt' width='25pt' color='var(--second-color)'/>
             <span className='resume__item--text'>
               { recipe?.totalNutrients.ENERC_KCAL.quantity ?
                 Math.ceil((Math.ceil(recipe.totalNutrients.ENERC_KCAL.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' kcal'
@@ -125,7 +125,7 @@ const Post = () => {
             </span>
           </li>
           <li className='resume__item'>
-            <Protein height='25pt' width='25pt' color='white'/>
+            <Protein height='25pt' width='25pt' color='var(--second-color)'/>
             <span className='resume__item--text'>
               {recipe?.totalNutrients.PROCNT.quantity ?
                 Math.ceil((Math.ceil(recipe.totalNutrients.PROCNT.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' g'
@@ -133,7 +133,7 @@ const Post = () => {
             </span>
           </li>
           <li className='resume__item'>
-            <Fat height='25pt' width='25pt' color='white'/>
+            <Fat height='25pt' width='25pt' color='var(--second-color)'/>
             <span className='resume__item--text'>
               {recipe?.totalNutrients.FAT.quantity ?
                 Math.ceil((Math.ceil(recipe.totalNutrients.FAT.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' g'
@@ -142,7 +142,7 @@ const Post = () => {
             </span>
           </li>
           <li className='resume__item'>
-            <Carbs height='25pt' width='25pt' color='white'/>
+            <Carbs height='25pt' width='25pt' color='var(--second-color)'/>
             <span className='resume__item--text'>
               {recipe?.totalNutrients.CHOCDF.quantity ?
                 Math.ceil((Math.ceil(recipe.totalNutrients.CHOCDF.quantity) / Math.ceil(recipe.totalWeight)) * 100) + ' g'

@@ -27,7 +27,7 @@
   left: calc(50% - (440px / 2));
   width: 440px;
   height: 380px;
-  background-color: white;
+  background-color: var(--second-color);
   border-radius: 10px;
   padding: 40px 30px 10px 30px;
   opacity: 1;
@@ -63,7 +63,7 @@
   right: 0;
   height: 30px;
   width: 5px;
-  background-color: #6935FD;
+  background-color: var(--main-color);
 
 }
 .modalWindow__close-button::before {
@@ -74,11 +74,11 @@
   right: 0;
   height: 30px;
   width: 5px;
-  background-color: #6935FD;
+  background-color: var(--main-color);
 }
 .modalWindow__close-button:hover::before,
 .modalWindow__close-button:hover::after {
-  background-color: #e86a23;
+  background-color: var(--orange);
 }
 
 .modalWindow__main {
@@ -89,7 +89,7 @@
   display: block;
   font-size: 30px;
   font-weight: bold;
-  color: #6935FD;
+  color: var(--main-color);
   text-align: center;
 }
 
@@ -104,7 +104,7 @@
 .modalWindow__input {
   width: 100%;
   margin-bottom: 15px;
-  border-color: #6935FD;
+  border-color: var(--main-color);
   border-radius: 30px;
   height: 60px;
   padding-left: 30px;
@@ -112,7 +112,7 @@
 
 .modalWindow__input:focus {
   outline: none;
-  border-color: #e86a23;
+  border-color: var(--orange);
   border-width: 3px;
 }         
 
@@ -134,17 +134,17 @@
   height: 40px;
   margin-top: 15px;
   border-radius: 10px;
-  border: 2px solid #6935FD;
+  border: 2px solid var(--main-color);
   text-align: center;
-  color: white;
-  background-color: #6935FD;
+  color: var(--second-color);
+  background-color: var(--main-color);
 }
 
 .modalWindow__button:hover {
   cursor: pointer;
-  border: 2px solid #e86a23;
-  background-color: #e86a23;
-  color: white;
+  border: 2px solid var(--orange);
+  background-color: var(--orange);
+  color: var(--second-color);
 }
 
 .success-modal {

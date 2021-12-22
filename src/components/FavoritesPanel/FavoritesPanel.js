@@ -49,7 +49,7 @@ const FavoritesPanel = () => {
         <span className='favoritesPanel__link' onClick={() => chooseAll()}>Choose all</span>
       </div>
       <div className='favoritesPanel__trash-ico' onClick={() => removeAll()}>
-        <Trash width='25px' height='25px' color='#e86a23'/>
+        <Trash width='25px' height='25px' color='var(--orange)'/>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <ButtonUp width='50px' height='50px' color='#e86a23'/>
+      <ButtonUp width='50px' height='50px' color='var(--orange)'/>
     </footer>
   );
 };

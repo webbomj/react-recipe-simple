@@ -20,5 +20,5 @@ body {
 
 #root {
   padding-top: 10px;
-  background: linear-gradient(180deg, #6935FD 0%, #5a21fc 100%);
+  background: linear-gradient(180deg, var(--main-color) 0%, #5a21fc 100%);
 }

@@ -1,6 +1,6 @@
 .post {
-  background-color: white;
-  border: 1px solid white;
+  background-color: var(--second-color);
+  border: 1px solid var(--second-color);
   border-radius: 4px;
   padding: 0 10px 40px 10px;
   margin-top: 40px;
@@ -24,13 +24,13 @@ padding: 0 40px 0 5px;
   align-items: center;
   width: auto;
   padding: 4px 0 4px 10px;
-  background-color: #6935FD;
+  background-color: var(--main-color);
   border-start-start-radius: 50px;
   border-end-start-radius: 50px;
 }
 
 .post__total-info--Weight {
-  color: white;
+  color: var(--second-color);
   font-size: 17px;
   margin-left: 5px;
   margin-right: 10px;
@@ -52,16 +52,16 @@ padding: 0 40px 0 5px;
 .nutritional-value {
   margin-top: 30px;
   font-size: 18px;
-  color: #6935FD;
+  color: var(--main-color);
   text-align: right;
   font-weight: bold;
 }
 
 .resume {
   padding: 5px;
-  border: 1px solid #6935FD;
+  border: 1px solid var(--main-color);
   border-radius: 10px;
-  background-color: #6935FD;
+  background-color: var(--main-color);
 }
 
 .resume__list {
@@ -84,7 +84,7 @@ padding: 0 40px 0 5px;
 .resume__item--text {
   margin-left: 10px;
   font-size: 25px;
-  color: white;
+  color: var(--second-color);
 }
 
 /* Ingredients block */
@@ -98,7 +98,7 @@ padding: 0 40px 0 5px;
 
 .ingredients__item::before {
   content: '•';
-  color: #6935FD;
+  color: var(--main-color);
   padding-right: 10px;
 }
 
@@ -155,9 +155,9 @@ padding: 0 40px 0 5px;
   align-items: center;
   width: 40px;
   height: 40px;
-  border: 1px solid #6935FD;
+  border: 1px solid var(--main-color);
   border-radius: 3px;
-  color: #6935FD;
+  color: var(--main-color);
   font-size: 40px;
 }
 
@@ -176,14 +176,14 @@ padding: 0 40px 0 5px;
 }
 
 .ingredients-panel__button--text:hover {
-  color: white;
+  color: var(--second-color);
 }
 
 .ingredients__title--count {
-  color: #6935FD;
+  color: var(--main-color);
   font-weight: bold;
   font-size: 40px;
-  border-bottom: 1px solid #6935FD;
+  border-bottom: 1px solid var(--main-color);
 }
 
 .ingredients__table {
