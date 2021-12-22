@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './search.css'
+import './search.css';
 import { useDispatch } from 'react-redux';
 import fetchRecipe from '../AsyncActions/fetchReicepe';
 import { Link } from 'react-router-dom';
@@ -8,14 +8,14 @@ const MainContent = () => {
   const [ingredient, setIngredient] = useState('');
   const dispatch = useDispatch();
 
-  function handlerInput(e) {
+  const handlerInput = (e) => {
       setIngredient(e.target.value.trim().replace(/[а-яё]/gi, ''));
   }
     
-  function handlerClick() {
-        dispatch(fetchRecipe(ingredient))
+  const handlerClick = () => {
+        dispatch(fetchRecipe(ingredient));
         setIngredient('');
-  }
+  };
 
   return (
     <section className='wrapper'>
@@ -32,7 +32,6 @@ const MainContent = () => {
               placeholder='e.g. Chiken' 
               value={ingredient} 
               onChange={(e) => handlerInput(e)}
-            
             />  
           </div>
         <Link to="/"><button  onClick={() => handlerClick()} disabled={!ingredient}>Search</button></Link>

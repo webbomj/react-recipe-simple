@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './footer.css'
+import './footer.css';
 import { setModal } from '../Store/RecipesReducer';
 import ButtonUp from '../ui/buttonUp/ButtonUp';
 

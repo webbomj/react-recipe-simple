@@ -2,29 +2,31 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FavoritesList from '../FavoritesList/FavoritesList';
 import FavoritesPanel from '../FavoritesPanel/FavoritesPanel';
-import './favorites.css'
+import './favorites.css';
 import { setFavorite, localStorageItems } from '../Store/RecipesReducer';
 
 const Favorites = () => {
-  let dataLocalStorage = []
+  let dataLocalStorage = [];
   const dispatch = useDispatch();
-  const data = useSelector(state => state.data.favorites)
+  const data = useSelector(state => state.data.favorites);
 
-useEffect(() => {
-  let allKeysLocalStorage = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    allKeysLocalStorage.push(localStorage.key(i))
-    dataLocalStorage.push(JSON.parse(localStorage.getItem(allKeysLocalStorage[i])))
-  }
-  dispatch(setFavorite(dataLocalStorage))
-  window.scrollTo(0, 0)
-}, [])
+  useEffect(() => {
+    let allKeysLocalStorage = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      allKeysLocalStorage.push(localStorage.key(i));
+      dataLocalStorage.push(JSON.parse(localStorage.getItem(allKeysLocalStorage[i])));
+    }
+    dispatch(setFavorite(dataLocalStorage));
+  }, [dispatch])
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   const deleteLocalStorageItem = (keyDelete) => {
-    dispatch(setFavorite(data.filter(el => el.recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')!== keyDelete)))
+    dispatch(setFavorite(data.filter(el => el.recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')!== keyDelete)));
     localStorage.removeItem(keyDelete);
-    dispatch(localStorageItems(localStorage.length))
+    dispatch(localStorageItems(localStorage.length));
   }
 
   return (
@@ -41,7 +43,6 @@ useEffect(() => {
     </div>
     </>
   )
-  
 }
 
 export default Favorites;

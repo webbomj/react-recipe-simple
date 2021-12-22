@@ -4,14 +4,15 @@ import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Post from './components/Post/Post';
-import ContentWrapper from './components/ContentWrapper/ContentWrapper'
+import ContentWrapper from './components/ContentWrapper/ContentWrapper';
 import Search from './components/Search/Search';
 import Title from './components/Title/Title';
 import RecipeList from './components/RecipeList/RecipeList';
 import ModalWindow from './components/ModalWindow/ModalWindow';
 import Favorites from './components/Favorites/Favorites';
+import Error from './components/Error/Error';
 
-function App() {
+const App = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', function() {
@@ -26,15 +27,17 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <div className='App'>
       <Header/>
       <ContentWrapper>
       <Title/>
       <Search/>
         <Routes>
+          <Route path='*' element={<Error/>}></Route>
           <Route path='/' element={<RecipeList/>}></Route>
           <Route path='/:postId' element={<Post/>}></Route>
           <Route path='/favorites' element={<Favorites/>}></Route>
+          <Route path='/error' element={<Error/>}></Route>
         </Routes>
       </ContentWrapper>
       <ModalWindow/>

@@ -8,6 +8,7 @@ export const SET_MODAL = 'SET_MODAL';
 export const SET_FAVORITES = 'SET_FAVORITES';
 export const REMOVE_FAVORITES = 'REMOVE_FAVORITES';
 export const LOCAL_STORE_ITEMS = 'LOCAL_STORE_ITEMS';
+export const SET_ERROR = 'SET_ERROR';
 
 const initialState = {
   data: {},
@@ -18,7 +19,7 @@ const initialState = {
   isModal: false,
   favorites: [],
   localStoreItems: 0,
-
+  error: ['none', 'Page not found'],
 };
 
 const reducer = (state = initialState, action) => {
@@ -41,20 +42,23 @@ const reducer = (state = initialState, action) => {
       return {...state, favorites: [...state.favorites.filter(el => el !== action.payload[0])]}
     case LOCAL_STORE_ITEMS:
       return {...state, localStoreItems: action.payload}
+    case SET_ERROR:
+      return {...state, error: {...action.payload}}
     default:
       return state
   }
 };
 
-export const fetchData = (payload) => ( {type: FETCH, payload} )
-export const addQuerry = (payload) => ( {type: ADD_QUERY, payload} )
-export const addPostData = (payload) => ( {type: ADD_POSTDATA, payload} )
-export const setPostId = (payload) => ( {type: SET_POSTID, payload} )
-export const setLoading = (payload) => ( {type: SET_LOADING, payload} )
-export const setModal = (payload) => ( {type: SET_MODAL, payload} )
-export const setFavorite = (payload) => ( {type: SET_FAVORITES, payload} )
-export const removeFavorite = (payload) => ( {type: REMOVE_FAVORITES, payload} )
-export const localStorageItems = (payload) => ( {type: LOCAL_STORE_ITEMS, payload} )
+export const fetchData = (payload) => ( {type: FETCH, payload} );
+export const addQuerry = (payload) => ( {type: ADD_QUERY, payload} );
+export const addPostData = (payload) => ( {type: ADD_POSTDATA, payload} );
+export const setPostId = (payload) => ( {type: SET_POSTID, payload} );
+export const setLoading = (payload) => ( {type: SET_LOADING, payload} );
+export const setModal = (payload) => ( {type: SET_MODAL, payload} );
+export const setFavorite = (payload) => ( {type: SET_FAVORITES, payload} );
+export const removeFavorite = (payload) => ( {type: REMOVE_FAVORITES, payload} );
+export const localStorageItems = (payload) => ( {type: LOCAL_STORE_ITEMS, payload} );
+export const setError = (payload) => ( {type: SET_ERROR, payload} );
 
 export default reducer;
 

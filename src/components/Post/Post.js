@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Post.css';
 import { useDispatch, useSelector} from 'react-redux';
-import { useParams} from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import {setPostId} from '../Store/RecipesReducer';
 import fetchOneRecipe from '../AsyncActions/fetchOneRecipe';
 import Calories from '../ui/Icons/Calories/Calories';
@@ -13,72 +13,71 @@ import Clock from '../ui/Icons/Clock/Clock';
 import Flag from '../ui/Icons/Flag/Flag';
 import Preloader from '../ui/preloader/Preloader';
 import Favorites from '../ui/Icons/Favorites/Favorites';
-import {localStorageItems} from '../Store/RecipesReducer'
+import {localStorageItems} from '../Store/RecipesReducer';
 
 
 const Post = () => {
   let imgSRC = 'https://via.placeholder.com/300';
-  let arrIngredients = [];
   let {postId} = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchOneRecipe(`https://api.edamam.com/api/recipes/v2/${postId}?type=public&app_id=9aa93e9c&app_key=98b8b38b27fcc09925f8d185765479ff`))
+    dispatch(fetchOneRecipe(`https://api.edamam.com/api/recipes/v2/${postId}?type=public&app_id=9aa93e9c&app_key=98b8b38b27fcc09925f8d185765479ff`));
   }, [postId, dispatch])
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, [])
 
   const recipe = useSelector(state => state.data.post.recipe);
   const postData = useSelector(state => state.data.post);
   const isLoading = useSelector(state => state.data.loading);
+  const error = useSelector(state => state.data.error);
   const [portions, setPortions] = useState(1);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [ing, setIng] = useState(arrIngredients);
 
-  
+
   if (recipe !== null && recipe !== undefined) {
-    dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')))
+    dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')));
     if (recipe.images.REGULAR) {
-      imgSRC = recipe.images.REGULAR.url
+      imgSRC = recipe.images.REGULAR.url;
     }
-  arrIngredients = [...recipe.ingredients]
   }
 
   const incPortion = () => {
-    setPortions(prev => prev + 1)
-  }
+    setPortions(prev => prev + 1);
+  };
 
   const decPortion = () => {
     if (portions === 1) {
       return
     } else {
-      setPortions(prev => prev - 1)
+      setPortions(prev => prev - 1);
     }
-  }
+  };
 
   const addFavorites = () => {
     let localStorageItem = localStorage.getItem(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
     if (localStorageItem !== null) {
-      localStorage.removeItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''))
+      localStorage.removeItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
     } else {
-      localStorage.setItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''), JSON.stringify(postData))
+      localStorage.setItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''), JSON.stringify(postData));
     }
-    dispatch(localStorageItems(localStorage.length))
-    setIsFavorite(!isFavorite)
-  }
+    dispatch(localStorageItems(localStorage.length));
+    setIsFavorite(!isFavorite);
+  };
 
   useEffect(() =>{
-    let localStorageItem = localStorage.getItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''))
+    let localStorageItem = localStorage.getItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
     if (localStorageItem !== null) {
-      setIsFavorite(true)
+      setIsFavorite(true);
     }
   }, [recipe?.uri])
 
   return (
     <>
     {isLoading ? <Preloader/> : 
+      error[0] === 'error' ? <Navigate to='error' replace='true' /> :
     <div className='post'>
       <h2 className='post__title'>{recipe?.label}</h2>
       <div className={isFavorite === true ? 'card__icons card__icons--active' : 'card__icons'}>
@@ -103,7 +102,6 @@ const Post = () => {
           </span>
         </div>
       </div>
-      
       <div className='post__wrapper'>
         <div className='post__picture'><img className="post__img" src={imgSRC} alt={recipe?.label}/></div>
         <div className='post__ingredients'>
@@ -175,7 +173,6 @@ const Post = () => {
                 <td className='ingredients__table--title'></td>
                 <td className='ingredients__table--title title__Measure'></td>
               </tr>
-
               { recipe?.ingredients.map(el => {
                 return  <tr key={Date.now() + Math.random()}>
                   <td  className='ingredients__table--ingredients'>{el.food.slice(0, 1).toUpperCase() + el.food.slice(1)}</td>
@@ -183,17 +180,6 @@ const Post = () => {
                   <td  className='ingredients__table--ingredients ingredients__table--measure'>{el.measure === '<unit>' ? 'unit' : el.measure}</td>
                  </tr>
               })}
-          
-
-                {/* {ing.map(el => {
-                  return (
-                    <tr key={el.food}>
-                    <td  className='ingredients__table--ingredients'>{el.food.slice(0, 1).toUpperCase() + el.food.slice(1)}</td>
-                    <td  className='ingredients__table--ingredients ingredients__table--quantity'>{el.quantity}</td>
-                    <td  className='ingredients__table--ingredients ingredients__table--measure'>{el.measure === '<unit>' ? 'unit' : el.measure}</td>
-                    </tr>
-                  ) 
-                })} */}
             </tbody>
           </table>
           </div>

@@ -1,5 +1,7 @@
 .preloader {
   margin: 0 auto;
+  transform: translateX(90px);
+  margin-top: 40px;
 }
 
 .lds-roller {

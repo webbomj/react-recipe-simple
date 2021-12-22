@@ -5,36 +5,38 @@ import Preloader from '../ui/preloader/Preloader';
 import {useDispatch, useSelector } from 'react-redux';
 import fetchNextPage from '../AsyncActions/fetchNextPage';
 import fetchRecipe from '../AsyncActions/fetchReicepe';
+import { Navigate } from 'react-router';
 
 const RecipeList = () => {
   const data = useSelector(state => state.data.data.hits);
   const _links = useSelector(state => state.data.data._links);
   const isLoading = useSelector(state => state.data.loading);
   const query = useSelector(state => state.data.query);
+  const error = useSelector(state => state.data.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
     try {
-        dispatch(fetchRecipe(query))
+        dispatch(fetchRecipe(query));
     }catch(e){
-      console.log('useEffect1', e)
+      console.log('useEffect1', e);
     }
   }, [query, dispatch]);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, [])
   
   let nextPageUrl = '' ;
   if (_links) {
-    nextPageUrl = _links?.next?.href
+    nextPageUrl = _links?.next?.href;
   } else {
-    nextPageUrl = 'http://localhost:3000/'
+    nextPageUrl = 'http://localhost:3000/';
   }
 
   const clickNextPage = () => {
-    dispatch(fetchNextPage(nextPageUrl))
-    window.scrollTo(0, 0)
+    dispatch(fetchNextPage(nextPageUrl));
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -44,6 +46,8 @@ const RecipeList = () => {
         {isLoading ? 
         <Preloader/>
         :
+          error[0] === 'error' ? <Navigate to='error' replace='true'/>
+          :
         data?.map(el => {
           return <RecipeItem 
                   data={el} 

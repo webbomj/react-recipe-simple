@@ -3,8 +3,8 @@ import React from 'react';
 const Clock = ({height, width, color}) => {
   return (
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width={width} height={height} viewBox="0 0 512.000000 512.000000"
- preserveAspectRatio="xMidYMid meet">
+      width={width} height={height} viewBox="0 0 512.000000 512.000000"
+      preserveAspectRatio="xMidYMid meet">
       <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
       fill={color} stroke="none">
       <path d="M2240 5105 c-389 -48 -766 -188 -1091 -404 -504 -335 -871 -825
@@ -38,7 +38,6 @@ const Clock = ({height, width, color}) => {
       101 -5 131 33 42 54 35 168 -13 213 -29 27 -92 37 -125 19z"/>
       </g>
     </svg>
-
   );
 };
 

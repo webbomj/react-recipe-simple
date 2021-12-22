@@ -1,9 +1,9 @@
 .favoriteList {
   width: 100%;
-  background-color: white;
-  border-radius: 10px;
   padding: 10px 10px 20px 10px;
   margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: white;
   box-shadow:inset 0 -1px 2px 0 rgba(0,0,0,.5), 
     inset 0 1px 2px 0 rgba(255,255,255,0.5);
 }
@@ -25,21 +25,15 @@
   display: inline-block;
   width: 1em;
   height: 1em;
+  margin-right: 0.5em;
   flex-shrink: 0;
   flex-grow: 0;
   border: 1px solid #adb5bd;
   border-radius: 0.25em;
-  margin-right: 0.5em;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
 }
-
-/* .favoriteList__checkbox:checked+label::before {
-  border-color: #6935FD;
-  background-color: #6935FD;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
-} */
 
 .favoriteList__checkboxes:before {
   border-color: #6935FD;
@@ -52,10 +46,6 @@
   justify-content: space-between;
   width: 100%;
   padding: 0 5px 0 15px;
-}
-
-.favoriteList__recipe {
-
 }
 
 .favoriteList__image {
@@ -74,13 +64,16 @@
   margin-top: 10px;
 }
 
+.favoriteList__info a:hover {
+  color: #e86a23;
+}
+
 .favoriteList__title {
   font-size: 24px;
 }
 
 .favoriteList__icons {
   display: flex;
-  background-color: #6935FD;
   width: 35px;
   height: 35px;
   padding-top: 8px;
@@ -88,6 +81,7 @@
   flex-direction: column;
   border-radius: 50%;
   cursor: pointer;
+  background-color: #6935FD;
 }
 
 .favoriteList__icons:hover{
@@ -107,18 +101,19 @@
 }
 
 .tooltip-text {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
   position: absolute;
+
   z-index: 1;
   bottom: 150%;
   left: 50%;
+  width: 120px;
+  padding: 5px 0;
   margin-left: -60px;
+  text-align: center;
+  border-radius: 6px;
+  visibility: hidden;
+  color: #fff;
+  background-color: black;
 }
 
 .tooltip-text::after {

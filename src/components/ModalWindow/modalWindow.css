@@ -4,13 +4,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* display: flex;
-  justify-content: center; */
   width: 100vw;
   height: 100vh;
-  /* align-items: center; */
   z-index: 1;
-
 }
 
 .modalWindow__back {
@@ -94,7 +90,6 @@
   font-size: 30px;
   font-weight: bold;
   color: #6935FD;
-
   text-align: center;
 }
 
@@ -116,18 +111,17 @@
 }
 
 .modalWindow__input:focus {
-  /* outline: tomato; */
   outline: none;
   border-color: #e86a23;
   border-width: 3px;
 }         
 
 .modalWindow__label {
+  margin-left: 60px;
   width: 100%;
   color: red;
   visibility: hidden;
   font-size: 12px;
-  margin-left: 60px;
 }
 
 .modalWindow__label--error {
@@ -156,7 +150,6 @@
 .success-modal {
   margin-top: 15%;
   height: 100%;
-
 }
 
 .success-modal__text {

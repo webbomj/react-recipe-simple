@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
-import {Link} from 'react-router-dom';
-import './header.css'
+import {Link, NavLink} from 'react-router-dom';
+import './header.css';
 import Button from '../ui/button/Button';
-import Logo from '../ui/Icons/Logo/Logo'
+import Logo from '../ui/Icons/Logo/Logo';
 import { useDispatch, useSelector } from 'react-redux';
 import { localStorageItems, setModal } from '../Store/RecipesReducer';
  
 const Header = () => {
 
   const dispatch = useDispatch();
-  const isModal = useSelector(state => state.data.isModal)
-  const quantityLocal = useSelector(state => state.data.localStoreItems)
-
+  const isModal = useSelector(state => state.data.isModal);
+  const quantityLocal = useSelector(state => state.data.localStoreItems);
 
   useEffect(() => {
     dispatch(localStorageItems(localStorage.length))
@@ -26,11 +25,9 @@ const Header = () => {
       </div>
       <nav className='header__navigation'>
         <ul className='header__navigation-list'>
-          <li className='header__navigation-item'><Link to='/'>Home</Link></li>
+          <li className='header__navigation-item'><NavLink to='/'>Home</NavLink></li>
           <li className='header__navigation-item'><Link to='#' onClick={() => dispatch(setModal(!isModal))}>Buy recipie`s book</Link></li>
-          <li className='header__navigation-item'><Link to='/favorites'>Favorites</Link>
-          
-
+          <li className='header__navigation-item'><NavLink to='/favorites'>Favorites</NavLink>
           {quantityLocal > 0 ?  
             <Link to='/favorites'><div className='header__navigation-favorites'>{quantityLocal}</div></Link>
           :
@@ -38,7 +35,6 @@ const Header = () => {
           }
           </li>
         </ul>
-      
       </nav>
       <div className='header__button'>
         <Button text='GitHub' href='https://webbomj.github.io/react-recipe-simple' color='white'/>
@@ -46,6 +42,5 @@ const Header = () => {
     </header>
   );
 };
-
 
 export default Header;

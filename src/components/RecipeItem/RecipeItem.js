@@ -1,23 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './recipeItem.css'
+import React, { useEffect, useState } from 'react';
+import './recipeItem.css';
 import { Link } from 'react-router-dom';
 import Calories from '../ui/Icons/Calories/Calories';
 import Clock from '../ui/Icons/Clock/Clock';
 import { useDispatch} from 'react-redux';
 import fetchOneRecipe from '../AsyncActions/fetchOneRecipe';
-import {setPostId} from '../Store/RecipesReducer'
+import {setPostId} from '../Store/RecipesReducer';
 import Favorites from '../ui/Icons/Favorites/Favorites';
-import {localStorageItems} from '../Store/RecipesReducer'
+import {localStorageItems} from '../Store/RecipesReducer';
 
 
 const RecipeItem = ({data}) => {
   const {recipe, _links} = data;
   const dispatch = useDispatch();
-  const [isFavorite, setIsFavorite] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(false);
   const handlerClick = (url) => {
     if (url) {
-      dispatch(fetchOneRecipe(url))
-      dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')))
+      dispatch(fetchOneRecipe(url));
+      dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')));
     } else { return }    
   }
   
@@ -37,17 +37,15 @@ const RecipeItem = ({data}) => {
     dispatch(localStorageItems(localStorage.length));
     const recipess = document.getElementById(recipe.label);
     recipess.classList.toggle('card__icons--active');
-    setIsFavorite(!isFavorite)
+    setIsFavorite(!isFavorite);
   }
-
 
   useEffect(() => {
     let localStorageItem = localStorage.getItem(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
     if (localStorageItem !== null) {
-      setIsFavorite(true)
+      setIsFavorite(true);
     }
-  }, [recipe.label])
-
+  }, [recipe.uri])
   
   return (    
       <div className="card">

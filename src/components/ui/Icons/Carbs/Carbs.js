@@ -104,7 +104,6 @@ const Carbs = ({height, width, color}) => {
       -138 299 0 24 11 24 105 1z"/>
       </g>
     </svg>
-
   );
 };
 

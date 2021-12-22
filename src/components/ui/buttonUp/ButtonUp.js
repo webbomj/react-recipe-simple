@@ -1,5 +1,5 @@
 import React from 'react';
-import './buttonUp.css'
+import './buttonUp.css';
 
 const ButtonUp = ({width, height, color}) => {
 
@@ -7,11 +7,9 @@ const ButtonUp = ({width, height, color}) => {
     const rootElement = document.documentElement;
     rootElement.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: 'smooth'
     });
   }
-
-  
 
   return (
     <div className='buttonUp' onClick={() => scrollToUp()}>

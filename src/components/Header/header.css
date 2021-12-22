@@ -10,6 +10,9 @@
   top: 7px;
 }
 
+.active {
+  border-bottom: 2px solid #6935FD;
+}
 
 .header__navigation-list {
   display: flex;
@@ -54,8 +57,4 @@
 .header__navigation-favorites:hover {
   background-color: #6935FD;
   cursor: pointer;
-}
-
-.header__navigation-favorites-null {
-
 }

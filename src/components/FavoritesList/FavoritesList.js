@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Favorites from '../ui/Icons/Favorites/Favorites';
-import "./favoritesList.css"
+import "./favoritesList.css";
 import { Link } from 'react-router-dom';
 
 const FavoritesList = ({data, removeKey}) => {
-const [isChecked, setChecked] = useState(false)
-let srcImage = 'https://via.placeholder.com/100';
+  const [isChecked, setChecked] = useState(false);
+  let srcImage = 'https://via.placeholder.com/100';
   if (data.recipe.images.THUMBNAIL) {
     srcImage = data.recipe.images.THUMBNAIL.url;
   }
@@ -19,7 +19,7 @@ let srcImage = 'https://via.placeholder.com/100';
       onClick={() => setChecked(!isChecked)}></label>
     <div className='favoriteList__content'>
       <div className='favoriteList__recipe'>
-        <img className='favoriteList__image' src={srcImage}/>
+        <img className='favoriteList__image' src={srcImage} alt={data.recipe.label}/>
       </div>
       <div className='favoriteList__info'>
         <Link to={'/' + data.recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')} >

@@ -10,6 +10,7 @@
 .post__title {
 text-align: center;
 font-size: 30px;
+padding: 0 40px 0 5px;
 }
 
 .post__total-wrapper {
@@ -37,7 +38,7 @@ font-size: 30px;
 
 .post__wrapper {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-top: 20px;
 }
 
@@ -149,8 +150,6 @@ font-size: 30px;
 }
 
 .ingredients-panel__button {
-  color: #6935FD;
-  font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,7 +157,8 @@ font-size: 30px;
   height: 40px;
   border: 1px solid #6935FD;
   border-radius: 3px;
-
+  color: #6935FD;
+  font-size: 40px;
 }
 
 .ingredients-panel__button:hover {
@@ -185,7 +185,6 @@ font-size: 30px;
   font-size: 40px;
   border-bottom: 1px solid #6935FD;
 }
-
 
 .ingredients__table {
   width: 100%;
@@ -222,7 +221,6 @@ font-size: 30px;
 .title__Measure {
   width: 20px;
 }
-
 
 .post__title--favoriteIcon {
   text-align: center;

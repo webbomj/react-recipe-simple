@@ -350,12 +350,11 @@ template {
 }
 
 .App {
-
   position: relative;
   max-width: 1600px;
   margin: 0 auto;
-  overflow: hidden;
   min-height: 100vh;
-  background: linear-gradient(180deg, #F8F8F8 0%, #F8F8F8 100%);
   border-radius: 10px;
+  background: linear-gradient(180deg, #F8F8F8 0%, #F8F8F8 100%);
+  overflow: hidden;
 }

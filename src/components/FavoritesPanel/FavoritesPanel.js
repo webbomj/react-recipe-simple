@@ -1,44 +1,44 @@
 import React, { useState } from 'react';
-import './favoritesPanel.css'
-import Trash from '../ui/Icons/Trash/Trash'
+import './favoritesPanel.css';
+import Trash from '../ui/Icons/Trash/Trash';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFavorite, localStorageItems} from '../Store/RecipesReducer';
 
 const FavoritesPanel = () => {
 
-  const [isCheacked, setIsChecked] = useState(false)
+  const [isCheacked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
-  const favorites = useSelector(state => state.data.favorites)
-  let mainCheckBox = document.querySelector('.favoritesPanel__input+label')
+  const favorites = useSelector(state => state.data.favorites);
+  let mainCheckBox = document.querySelector('.favoritesPanel__input+label');
 
   const chooseAll = () => {
     let allCheckBoxes = document.querySelectorAll('.favoriteList__checkbox-label');
     if (isCheacked) {
       allCheckBoxes.forEach(el => {
         el.classList.remove('favoriteList__checkboxes')
-      })
-      mainCheckBox.classList.remove('favoriteList__checkboxes')
-      setIsChecked(false)
+      });
+      mainCheckBox.classList.remove('favoriteList__checkboxes');
+      setIsChecked(false);
     } else {
       allCheckBoxes.forEach(el => {
         el.classList.add('favoriteList__checkboxes')
-      })
-      mainCheckBox.classList.add('favoriteList__checkboxes')
-      setIsChecked(true)
+      });
+      mainCheckBox.classList.add('favoriteList__checkboxes');
+      setIsChecked(true);
     }
   }
 
   const removeAll = () => {
     let allCheckBoxes = document.querySelectorAll('.favoriteList__checkboxes.favoriteList__checkbox-label');
-    let allRemoveItems = []
-    mainCheckBox.classList.remove('favoriteList__checkboxes')
+    let allRemoveItems = [];
+    mainCheckBox.classList.remove('favoriteList__checkboxes');
     allCheckBoxes.forEach(element => {
       allRemoveItems.push(favorites.filter(el => el.recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '') === element.htmlFor));
       localStorage.removeItem(element.htmlFor);
-      dispatch(localStorageItems(localStorage.length))
-    })
+      dispatch(localStorageItems(localStorage.length));
+    });
     allRemoveItems.forEach(el => {
-      dispatch(removeFavorite(el))})
+      dispatch(removeFavorite(el))});
   }
 
   return (
