@@ -35,10 +35,11 @@ const Post = () => {
   const error = useSelector(state => state.data.error);
   const [portions, setPortions] = useState(1);
   const [isFavorite, setIsFavorite] = useState(false);
+  const strChange = 'http://www.edamam.com/ontologies/edamam.owl#recipe_';
 
 
   if (recipe !== null && recipe !== undefined) {
-    dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')));
+    dispatch(setPostId(recipe.uri.replace(strChange, '')));
     if (recipe.images.REGULAR) {
       imgSRC = recipe.images.REGULAR.url;
     }
@@ -57,18 +58,18 @@ const Post = () => {
   };
 
   const addFavorites = () => {
-    let localStorageItem = localStorage.getItem(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
+    let localStorageItem = localStorage.getItem(recipe.uri.replace(strChange, ''));
     if (localStorageItem !== null) {
-      localStorage.removeItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
+      localStorage.removeItem(recipe?.uri.replace(strChange, ''));
     } else {
-      localStorage.setItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''), JSON.stringify(postData));
+      localStorage.setItem(recipe?.uri.replace(strChange, ''), JSON.stringify(postData));
     }
     dispatch(localStorageItems(localStorage.length));
     setIsFavorite(!isFavorite);
   };
 
   useEffect(() =>{
-    let localStorageItem = localStorage.getItem(recipe?.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
+    let localStorageItem = localStorage.getItem(recipe?.uri.replace(strChange, ''));
     if (localStorageItem !== null) {
       setIsFavorite(true);
     }
@@ -78,7 +79,7 @@ const Post = () => {
     <>
     {isLoading ? <Preloader/> : 
       error[0] === 'error' ? <Navigate to='error' replace='true' /> :
-    <div className='post'>
+    <main className='post'>
       <h2 className='post__title'>{recipe?.label}</h2>
       <div className={isFavorite === true ? 'card__icons card__icons--active' : 'card__icons'}>
             <div className='post__title--favoriteIcon' onClick={() => addFavorites()}>
@@ -152,14 +153,19 @@ const Post = () => {
           </li>
         </ul>
       </div>
-      <div className='ingredients'>
+      <article className='ingredients'>
           <div className='ingredients__header'>
             <h3 className='ingredients__title'>
-            To make <span className='ingredients__title--count'>{portions === 1 ? portions + ' serving' : portions + ' servings'}</span> you need:
+            To make <span className='ingredients__title--count'>{portions === 1 ? portions + ' serving' : portions + ' servings'}</span>
+             you need:
             </h3>
             <div className='ingredients__panel'>
-              <div className='ingredients-panel__button ingredients-panel__button--inc' onClick={() => incPortion()}><span className='ingredients-panel__button--text'>&#43;</span></div>
-              <div className='ingredients-panel__button ingredients-panel__button--dec' onClick={() => decPortion()}><span className='ingredients-panel__button--text'>&#8722;</span></div>
+              <div className='ingredients-panel__button ingredients-panel__button--inc' onClick={() => incPortion()}>
+                <span className='ingredients-panel__button--text'>&#43;</span>
+              </div>
+              <div className='ingredients-panel__button ingredients-panel__button--dec' onClick={() => decPortion()}>
+                <span className='ingredients-panel__button--text'>&#8722;</span>
+              </div>
             </div>
           </div>
           <div className='ingredients__images'>{recipe?.ingredients.map(el => {
@@ -169,7 +175,7 @@ const Post = () => {
           <table className='ingredients__table'>
             <tbody>
               <tr>
-                <td className='ingredients__table--title'>Necessary ingredients</td>
+                <td className='ingredients__table--title' colSpan='3'>Necessary ingredients</td>
                 <td className='ingredients__table--title'></td>
                 <td className='ingredients__table--title title__Measure'></td>
               </tr>
@@ -178,21 +184,26 @@ const Post = () => {
                   <td  className='ingredients__table--ingredients'>{el.food.slice(0, 1).toUpperCase() + el.food.slice(1)}</td>
                   <td  className='ingredients__table--ingredients ingredients__table--quantity'>
                     {/* {Math.round(el.quantity.toFixed(1) * portions)} */}
-                    {String((el.quantity.toFixed(2) * portions).toFixed(1)).split('.')[1] == 0 
+                    {String((el.quantity.toFixed(2) * portions).toFixed(1)).split('.')[1] === '0' 
                       ? 
                       Number(String((el.quantity.toFixed(2) * portions).toFixed(1)).split('.')[0])
                       : 
                       (el.quantity.toFixed(1) * portions).toFixed(1)
                      }
                   </td>
-                  <td  className='ingredients__table--ingredients ingredients__table--measure'>{el.measure === '<unit>' ? 'unit' : el.measure}</td>
+                  <td  className='ingredients__table--ingredients ingredients__table--measure'>{el.measure === '<unit>' 
+                    ? 
+                    'unit' 
+                    : 
+                    el.measure}
+                  </td>
                  </tr>
               })}
             </tbody>
           </table>
           </div>
-      </div>
-    </div>
+      </article>
+    </main>
     }</>
   );
 };
