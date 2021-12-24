@@ -57,7 +57,7 @@ const ModalWindow = () => {
   }
 
   const clickCloseModal = (e) => {
-    if (e.target.id === 'modalWindow__back' || e.target.id === "modalWindow__close-button") {
+    if (e.target.id === 'modalWindow__back' || e.target.id === 'modalWindow__close-button') {
       let modal = document.querySelector('.modalWindow__wrapper');
       modal.classList.add('modalWindow-disabled');
       dispatch(setModal(false));
@@ -67,10 +67,10 @@ const ModalWindow = () => {
 
   return ( 
     <div className={isModal ? 'modalWindow__wrapper' : 'modalWindow__wrapper modalWindow-disabled' }>
-      <div className='modalWindow__back' id="modalWindow__back" onClick={(e) => clickCloseModal(e)} >
+      <div className='modalWindow__back' id='modalWindow__back' onClick={(e) => clickCloseModal(e)} >
       </div>
       <div className='modalWindow' >
-        <div className='modalWindow__close-button' id="modalWindow__close-button"  onClick={(e) => clickCloseModal(e)}></div>
+        <div className='modalWindow__close-button' id='modalWindow__close-button'  onClick={(e) => clickCloseModal(e)}></div>
         <div className='modalWindow__main'>
         {isModalWindows ? <>
         <span className='modalWindow__title'>Buy recipie`s book</span>
@@ -81,7 +81,7 @@ const ModalWindow = () => {
           <InputMask 
             mask="+7(999)-999-99-99" 
             maskChar={null} 
-            className='modalWindow__input' type='tel' id='modal-phone' placeholder="Your phone number" value={phone} onChange={(e) => handlePhoneInput(e)}
+            className='modalWindow__input' type='tel' id='modal-phone' placeholder='Your phone number' value={phone} onChange={(e) => handlePhoneInput(e)}
             />
           <button className='modalWindow__button' onClick={(e) => handleClick(e)}>Buy</button>
         </form>

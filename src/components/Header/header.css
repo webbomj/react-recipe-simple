@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   margin: 24px auto;
-  width: 1140px;
+  max-width: 1140px;
 }
 
 .header__logo {
@@ -57,4 +57,123 @@
 .header__navigation-favorites:hover {
   background-color: var(--main-color);
   cursor: pointer;
+}
+
+.hamburger-button {
+  display: none;
+  margin-right: 10px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 2.5rem;
+  width: 2.5rem;
+  cursor: pointer;
+}
+
+.hamburger-button-top,
+.hamburger-button-middle,
+.hamburger-button-bottom {
+  height: 5px;
+  background: black;
+  border-radius: 5px;
+  margin: 3px 0px;
+  transform-origin: left;
+  transition: all 0.5s;
+}
+
+.hamburger-button-top-open {
+  transform: rotate(45deg);
+}
+
+.hamburger-button-middle-open {
+  opacity: 0;
+}
+
+.hamburger-button-bottom-open {
+  transform: rotate(-45deg);
+}
+
+.header__topmenu {
+  display: none;
+  width: 80%;
+  height: 100%;
+  background-color: rgba(168, 168, 168, 0.97);
+  position: fixed;
+  top: 0;
+  left: -420px;
+  z-index: 200000;
+}
+
+.header__topmenu.header__topmenu--active {
+  left: 0;
+}
+
+.header__topmenu--active {
+  display: block;
+}
+
+.header__topmenu-list {
+  list-style-type: none;
+}
+
+.header__topmenu-item {
+  margin-bottom: 10px;
+}
+
+.header__topmenu-item a {
+  text-decoration: none;
+  font-size: 25px;
+}
+
+.header__button {
+  margin-right: 15px;
+}
+
+
+@media screen and (max-width: 840px) {
+  .header__navigation-item:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header__navigation-item:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    justify-content: space-around;
+  }
+
+  .header__button {
+    display: none;
+  }
+
+  .header__navigation-favorites {
+    top: -27px;
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .header__navigation-list {
+    display: none;
+  }
+  .header {
+    justify-content: space-between;
+  }
+
+  .hamburger-button {
+    display: flex;
+  }
+
+
+}
+
+@media screen and (max-width: 270px) {
+  .header__logo {
+    width: 70%;
+  }
 }

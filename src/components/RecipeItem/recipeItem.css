@@ -144,3 +144,91 @@
   margin-left: 14px;
   padding-top: 3px;
 }
+
+
+@media screen and (max-width: 670px) {
+
+  .card:not(:nth-child(3n)) {
+    margin-right: 0;
+  }
+
+  .card {
+    width: 270px;
+    margin-bottom: 25px;
+   }
+}
+
+@media screen and (max-width: 640px) {
+  .card:not(:nth-child(3n)) {
+    margin-right: 0;
+  }
+
+  .card:not(:nth-child(2n)) {
+    margin-right: 15px;
+  }
+
+}
+
+@media screen and (max-width: 570px) {
+  .card {
+    display: flex;
+    width: 100%;
+    min-height: 150px;
+    max-height: 300px;
+    padding: 10px;
+   }
+
+  .card:not(:nth-child(2n)) {
+    margin-right: 0;
+  }
+
+  .card:not(:nth-child(3n)) {
+    margin-right: 0;
+  }
+
+
+  .card__image {
+    justify-content: flex-start;
+    width: auto;
+  }
+
+  .card__icons {
+    right: 0;
+  }
+
+  .card__title {
+    font-size: 28px;
+    margin-left: 20px;
+  }
+
+  .card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .card__info {
+    position: relative;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+}
+
+@media screen and (max-width: 410px) {
+  .card {
+    flex-direction: column;
+    max-height: 400px;
+  }
+
+  .card__title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .card__image {
+    justify-content: center;
+  }
+
+
+}

@@ -32,7 +32,7 @@ const Favorites = () => {
   return (
     <>
     <FavoritesPanel/>
-    <div className='favorites__wrapper'>
+    <main className='favorites__wrapper'>
       {data?.length ? 
         data?.map(el => {
           return <FavoritesList data={el} removeKey={deleteLocalStorageItem} key={el.recipe.label}/>
@@ -40,7 +40,7 @@ const Favorites = () => {
       :
       <span className='favorites__nothing'>No items in favorites</span>
     }
-    </div>
+    </main>
     </>
   )
 }

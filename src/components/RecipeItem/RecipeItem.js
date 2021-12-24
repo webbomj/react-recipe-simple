@@ -14,13 +14,13 @@ const RecipeItem = ({data}) => {
   const {recipe, _links} = data;
   const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState(false);
+  const strChange = 'http://www.edamam.com/ontologies/edamam.owl#recipe_';
   const handlerClick = (url) => {
     if (url) {
       dispatch(fetchOneRecipe(url));
-      dispatch(setPostId(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')));
+      dispatch(setPostId(recipe.uri.replace(strChange, '')));
     } else { return }    
   }
-  
 
   let srcImage = 'https://via.placeholder.com/200';
   if (recipe.images.SMALL) {
@@ -28,11 +28,11 @@ const RecipeItem = ({data}) => {
   }
 
   const addFavorites = () => {
-    const localStorageItem = localStorage.getItem(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
+    const localStorageItem = localStorage.getItem(recipe.uri.replace(strChange, ''));
     if (localStorageItem === null || localStorageItem.length === 0) {
-      localStorage.setItem(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''), JSON.stringify(data));
+      localStorage.setItem(recipe.uri.replace(strChange, ''), JSON.stringify(data));
     } else {
-      localStorage.removeItem(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
+      localStorage.removeItem(recipe.uri.replace(strChange, ''));
     }
     dispatch(localStorageItems(localStorage.length));
     const recipess = document.getElementById(recipe.label);
@@ -41,16 +41,16 @@ const RecipeItem = ({data}) => {
   }
 
   useEffect(() => {
-    let localStorageItem = localStorage.getItem(recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', ''));
+    let localStorageItem = localStorage.getItem(recipe.uri.replace(strChange, ''));
     if (localStorageItem !== null) {
       setIsFavorite(true);
     }
   }, [recipe.uri])
   
   return (    
-      <div className="card">
+      <article className="card">
         <div className="card__image">
-          <Link to={recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')}>
+          <Link to={recipe.uri.replace(strChange, '')}>
             <img src={srcImage} alt={recipe.label} onClick={() => handlerClick(_links.self.href)}/>
           </Link>
           <div className={isFavorite === true ? 'card__icons card__icons--active' : 'card__icons'} id={recipe.label} >
@@ -62,7 +62,7 @@ const RecipeItem = ({data}) => {
         </div>
         <div className="card__content">
           <span className="card__title" onClick={() => handlerClick(_links.self.href)}>
-            <Link className="card__title--link"  to={recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')}>
+            <Link className="card__title--link"  to={recipe.uri.replace(strChange, '')}>
               {recipe.label.length > 50 ? recipe.label.substr(0, 50) + '...' : recipe.label}
             </Link>
           </span>
@@ -77,7 +77,7 @@ const RecipeItem = ({data}) => {
             </div>
           </div>
         </div>
-      </div>
+      </article>
   );
 };
 

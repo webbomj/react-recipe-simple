@@ -89,3 +89,24 @@
   border: 1px solid grey;
   cursor: auto;
 }
+
+@media screen and (max-width: 670px) {
+  .wrapper {
+    width: 100%
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .main__search button {
+    width: 130px;
+  }
+  .icon__search {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .main__search button {
+    width: 80px;
+  }
+}
