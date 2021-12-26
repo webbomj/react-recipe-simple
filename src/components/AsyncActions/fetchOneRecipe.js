@@ -3,7 +3,7 @@ import {addPostData, setLoading, setError} from '../Store/RecipesReducer';
 const fetchOneRecipe = (url) => {
   return function(dispatch) {
     dispatch(setLoading(true));
-    
+    dispatch(setError(['none', ``]));
     fetch(url)
       .then(response => {
         if (response.status !== 200) {

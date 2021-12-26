@@ -50,7 +50,7 @@ const RecipeItem = ({data}) => {
   return (    
       <article className="card">
         <div className="card__image">
-          <Link to={recipe.uri.replace(strChange, '')}>
+          <Link to={"/" + recipe.uri.replace(strChange, '')}>
             <img src={srcImage} alt={recipe.label} onClick={() => handlerClick(_links.self.href)}/>
           </Link>
           <div className={isFavorite === true ? 'card__icons card__icons--active' : 'card__icons'} id={recipe.label} >
@@ -62,7 +62,7 @@ const RecipeItem = ({data}) => {
         </div>
         <div className="card__content">
           <span className="card__title" onClick={() => handlerClick(_links.self.href)}>
-            <Link className="card__title--link"  to={recipe.uri.replace(strChange, '')}>
+            <Link className="card__title--link"  to={"/" + recipe.uri.replace(strChange, '')}>
               {recipe.label.length > 50 ? recipe.label.substr(0, 50) + '...' : recipe.label}
             </Link>
           </span>

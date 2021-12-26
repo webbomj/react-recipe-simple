@@ -22,7 +22,7 @@ const FavoritesList = ({data, removeKey}) => {
           <img className='favoriteList__image' src={srcImage} alt={data.recipe.label}/>
         </div>
         <div className='favoriteList__info'>
-          <Link to={'/' + data.recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')} >
+          <Link to={`/` + data.recipe.uri.replace('http://www.edamam.com/ontologies/edamam.owl#recipe_', '')} >
             <span className='favoriteList__title'>
               {data.recipe.label.length < 50 ? data.recipe.label : data.recipe.label.substr(0, 50) + '...' }
             </span>
