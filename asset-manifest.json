@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/react-recipe-simple/static/css/main.1c1ad942.chunk.css",
+    "main.js": "/react-recipe-simple/static/js/main.04b21c9a.chunk.js",
+    "main.js.map": "/react-recipe-simple/static/js/main.04b21c9a.chunk.js.map",
+    "runtime-main.js": "/react-recipe-simple/static/js/runtime-main.0ded4b3d.js",
+    "runtime-main.js.map": "/react-recipe-simple/static/js/runtime-main.0ded4b3d.js.map",
+    "static/js/2.211362b6.chunk.js": "/react-recipe-simple/static/js/2.211362b6.chunk.js",
+    "static/js/2.211362b6.chunk.js.map": "/react-recipe-simple/static/js/2.211362b6.chunk.js.map",
+    "index.html": "/react-recipe-simple/index.html",
+    "static/css/main.1c1ad942.chunk.css.map": "/react-recipe-simple/static/css/main.1c1ad942.chunk.css.map",
+    "static/js/2.211362b6.chunk.js.LICENSE.txt": "/react-recipe-simple/static/js/2.211362b6.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/react-recipe-simple/static/media/Roboto-Regular.a8d6ac03.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0ded4b3d.js",
+    "static/js/2.211362b6.chunk.js",
+    "static/css/main.1c1ad942.chunk.css",
+    "static/js/main.04b21c9a.chunk.js"
+  ]
+}
