@@ -1,10 +1,11 @@
 .post {
-  background-color: var(--second-color);
-  border: 1px solid var(--second-color);
-  border-radius: 4px;
+  width: 100%;
+  position: relative;
   padding: 0 10px 40px 10px;
   margin-top: 40px;
-  position: relative;
+  border: 1px solid var(--second-color);
+  border-radius: 4px;
+  background-color: var(--second-color);
 }
 
 .post__title {

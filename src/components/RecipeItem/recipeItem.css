@@ -73,10 +73,10 @@
   padding-top: 5px;
 }
 
-.card__icons:hover {
+/* .card__icons:hover {
   cursor: pointer;
   background-color: var(--black);
-}
+} */
 
 .card__icons--active {
   background-color: var(--orange);
@@ -145,6 +145,14 @@
   padding-top: 3px;
 }
 
+
+
+@media (hover) {
+  .card__icons:hover {
+    cursor: pointer;
+    background-color: var(--black);
+  }
+}
 
 @media screen and (max-width: 670px) {
 
