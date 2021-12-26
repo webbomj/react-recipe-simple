@@ -31,7 +31,7 @@ const RecipeList = () => {
   if (_links) {
     nextPageUrl = _links?.next?.href;
   } else {
-    nextPageUrl = 'http://localhost:3000/';
+    nextPageUrl = '/';
   }
 
   const clickNextPage = () => {

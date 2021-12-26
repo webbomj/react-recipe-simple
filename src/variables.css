@@ -3,8 +3,12 @@
   --second-color: white;
   --orange: #e86a23;
   --black: #000; */
-  --main-color: rgb(6, 135, 255);
+  /* --main-color: rgb(6, 135, 255);
   --second-color: white;
   --orange: #e86a23;;
-  --black: black;
+  --black: black; */
+  --main-color: rgba(34, 197, 156, 0.733);
+  --second-color: white;
+  --orange: rgba(0, 0, 0, 0.616);
+  --black: rgb(110, 110, 110);
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import './header.css';
 import Button from '../ui/button/Button';
@@ -54,10 +54,10 @@ const Header = () => {
           }
           </li>
         </ul>
-        <div class="hamburger-button" onClick={() => hamburgerOpen()}>
-          <div class="hamburger-button-top"></div>
-          <div class="hamburger-button-middle"></div>
-          <div class="hamburger-button-bottom"></div>
+        <div className="hamburger-button" onClick={() => hamburgerOpen()}>
+          <div className="hamburger-button-top"></div>
+          <div className="hamburger-button-middle"></div>
+          <div className="hamburger-button-bottom"></div>
         </div>
       </nav>
       <div className='header__button'>
