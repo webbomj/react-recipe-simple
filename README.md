@@ -3,7 +3,7 @@
 [Demo](https://webbomj.github.io/react-recipe-simple/)
 
 ## The project used
-React(component approach, FC, ), react router, react redux (thunk), HTML (semantic), CSS, BEM, Media request, react-input-mask, react redux devtools.
+React(component approach, FC, ), react router, react redux (thunk), HTML (semantic), CSS (flex-box, normalize.css), BEM, Media request, react-input-mask, react redux devtools.
 
 ## The project has implemented
 
