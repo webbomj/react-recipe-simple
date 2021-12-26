@@ -54,7 +54,7 @@ const RecipeItem = ({data}) => {
             <img src={srcImage} alt={recipe.label} onClick={() => handlerClick(_links.self.href)}/>
           </Link>
           <div className={isFavorite === true ? 'card__icons card__icons--active' : 'card__icons'} id={recipe.label} >
-            <div  className="card__icons--favorite" onClick={() => addFavorites()}>
+            <div  className="card__icons--favorite tooltip" onClick={() => addFavorites()}>
               <Favorites width='30px' height='30px' color='var(--second-color)' />
               <span className='tooltip-text'>{isFavorite ? 'Remove from favorites' : 'Add from favorites'}</span>
             </div>

@@ -82,9 +82,9 @@ const Post = () => {
     <main className='post'>
       <h2 className='post__title'>{recipe?.label}</h2>
       <div className={isFavorite === true ? 'card__icons card__icons--active' : 'card__icons'}>
-            <div className='post__title--favoriteIcon' onClick={() => addFavorites()}>
-              <Favorites width='30px' height='30px' color='var(--second-color)' />
-              <span className='tooltip-text'>{isFavorite ? 'Remove from favorites' : 'Add from favorites'}</span>
+            <div className='tooltip post__title--favoriteIcon ' onClick={() => addFavorites()}>
+              <Favorites width='30px' height='30px' color='var(--second-color)'/>
+              <span className='tooltip-text'>{isFavorite === true ? 'Remove from favorites' : 'Add from favorites'}</span>
             </div>
       </div>
       <div className='post__total-wrapper'>

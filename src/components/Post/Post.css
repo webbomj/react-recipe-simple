@@ -226,6 +226,7 @@ padding: 0 40px 0 5px;
 
 .post__title--favoriteIcon {
   text-align: center;
+  margin: 0 auto;
 }
 
 .post__title--favoriteIcon:hover {
