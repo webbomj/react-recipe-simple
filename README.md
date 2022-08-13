@@ -21,3 +21,10 @@
 
 1. `npm start`
 2. `npm run deploy`
+
+## Technology
+- React: 17.0.2 <br>
+- react-redux": 7.2.6<br>
+- react-router": 6.1.1<br>
+- redux": 4.1.2<br>
+- redux-thunk": 2.4.1<br>
